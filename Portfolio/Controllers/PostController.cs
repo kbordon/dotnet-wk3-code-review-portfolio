@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Portfolio.Models;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace Portfolio.Controllers
 {
@@ -23,8 +24,7 @@ namespace Portfolio.Controllers
 
         public IActionResult Index()
         {
-            
-            return View();
+            return View(_db.Posts);
         }
 
         [Authorize]
@@ -33,5 +33,18 @@ namespace Portfolio.Controllers
             return View();
             
         }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Create(Post newPost)
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            newPost.User = currentUser;
+            _db.Posts.Add(newPost);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }
