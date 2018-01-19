@@ -10,6 +10,9 @@
     <Folder Include="Models\" />
     <Folder Include="Views\" />
     <Folder Include="Views\Home\" />
+    <Folder Include="Views\Shared\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,4 +29,7 @@
         <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Views\Account\LoginViewModel.cs" />
+    </ItemGroup>
 </Project>
