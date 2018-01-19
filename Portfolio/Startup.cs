@@ -53,6 +53,7 @@ namespace Portfolio
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseIdentity();
+            app.UseStaticFiles();
 
             app.UseMvc(routes =>
             {
