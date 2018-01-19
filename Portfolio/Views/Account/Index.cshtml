@@ -1,9 +1,14 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @{
 }
 
-
-This would be where they could register.
-
+@using System.Security.Claims
+<h1>blog partial?</h1>
+@if (User.Identity.IsAuthenticated)
+{
+    <p>@User.Identity.Name</p>
+}
+else
+{
+    <p>@Html.ActionLink("Log in", "Login")</p>
+}
