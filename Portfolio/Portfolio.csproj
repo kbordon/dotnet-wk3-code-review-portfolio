@@ -13,6 +13,7 @@
     <Folder Include="Views\Shared\" />
     <Folder Include="Views\Account\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\Post\" />
   </ItemGroup>
 
   <ItemGroup>
