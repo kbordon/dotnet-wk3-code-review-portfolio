@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Portfolio.Models
 {
-    public class AppDbContext : IdentityDbContext
+    public class AppDbContext : IdentityDbContext<BlogUser>
     {
         public AppDbContext(DbContextOptions options) : base(options)
         {
