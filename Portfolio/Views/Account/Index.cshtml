@@ -5,4 +5,15 @@
 @using System.Security.Claims
 <h1>blog partial?</h1>
 
-hii.
+@if (User.Identity.IsAuthenticated)
+{
+    <p>@User.Identity.Name</p>
+    @using (Html.BeginForm("LogOut", "Account"))
+    {
+        <input type="submit" value="Log Out"/> 
+    }  
+}
+else
+{
+    <p>@Html.ActionLink("Log in", "Login")</p>
+}  

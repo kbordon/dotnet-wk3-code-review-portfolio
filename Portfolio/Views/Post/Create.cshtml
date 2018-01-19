@@ -1,0 +1,15 @@
+﻿@model Portfolio.Models.Post
+
+<h1>@User.Identity.Name</h1>
+<h2>Create a new post</h2>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Title)
+    @Html.TextBoxFor(model => model.Title)
+
+    @Html.TextAreaFor(model => model.Content)
+
+    <input type="submit" value="Submit" />
+}
+
+@Html.ActionLink("Blog", "Index")

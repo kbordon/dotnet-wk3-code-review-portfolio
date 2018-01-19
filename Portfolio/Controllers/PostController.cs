@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Portfolio.Controllers
 {
-    [Authorize]
     public class PostController : Controller
     {
         private readonly AppDbContext _db;
@@ -26,6 +25,13 @@ namespace Portfolio.Controllers
         {
             
             return View();
+        }
+
+        [Authorize]
+        public IActionResult Create()
+        {
+            return View();
+            
         }
     }
 }
