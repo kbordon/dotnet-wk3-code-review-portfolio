@@ -67,9 +67,11 @@ namespace Portfolio.Controllers
         //}
 
         [HttpPost]
-        public IActionResult Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
-            Console.WriteLine("########################");
+            Console.WriteLine("########################   " + model.Email + "   #########   " + model.Password);
+            Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
+            Console.WriteLine("########### "+result);
             return RedirectToAction("Index");
         }
 
