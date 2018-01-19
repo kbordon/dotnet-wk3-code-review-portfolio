@@ -24,5 +24,7 @@ namespace Portfolio.Models
                 entity.Property(m => m.NormalizedName).HasMaxLength(127);
             });
         }
+
+        public DbSet<Post> Posts { get; set; }
     }
 }

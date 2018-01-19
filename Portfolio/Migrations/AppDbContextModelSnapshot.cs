@@ -177,6 +177,26 @@ namespace Portfolio.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Portfolio.Models.Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Content");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Title");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("posts");
+                });
+
             modelBuilder.Entity("Portfolio.Models.BlogUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUser");
@@ -222,6 +242,13 @@ namespace Portfolio.Migrations
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Portfolio.Models.Post", b =>
+                {
+                    b.HasOne("Portfolio.Models.BlogUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
         }
     }
