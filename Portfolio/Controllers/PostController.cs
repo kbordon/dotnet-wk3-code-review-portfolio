@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Portfolio.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Portfolio.Controllers
 {
@@ -45,6 +46,47 @@ namespace Portfolio.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [Authorize]
+        public IActionResult Edit(int id)
+        {
+            var thisPost = _db.Posts.FirstOrDefault(p => p.Id == id);
+            return View(thisPost);
+
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Edit(Post editPost)
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            _db.Entry(editPost).State = EntityState.Modified;
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [Authorize]
+        public IActionResult Delete(int id)
+        {
+            var thisPost = _db.Posts.FirstOrDefault(p => p.Id == id);
+            return View(thisPost);
+
+        }
+
+        [Authorize]
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            Post thisPost = _db.Posts.FirstOrDefault(p => p.Id == id);
+            _db.Remove(thisPost);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
 
     }
 }
