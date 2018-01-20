@@ -8,7 +8,14 @@
         <script src="~/js/scripts.js"></script>
 </head>
 <body>
-   
+        
+    <div>
+        @Html.ActionLink("Blog", "Index", "Post")
+        @Html.ActionLink("Log In", "Index", "Account")
+        <a href="#about">Work</a>
+        <a href="#contact">Contact</a>
+    </div>
+
     <div>
         @RenderBody()
     </div>
