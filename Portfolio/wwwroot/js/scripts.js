@@ -41,7 +41,8 @@
             url: '/Comment/Create/' + x,
             success: function(result){
             $(y).siblings('.comment-form').html(result);
-            }   
+            }
         });
+        alert(x);
     });
 })

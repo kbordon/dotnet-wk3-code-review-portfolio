@@ -9,7 +9,7 @@ namespace Portfolio.Models
     public class Comment
     {
         [Key]
-        public int Id { get; set; }
+        public int CommentId { get; set; }
         public string Author { get; set; }
         public string Content { get; set; }
         public DateTime Date { get; set; }

@@ -50,9 +50,8 @@ namespace Portfolio.Controllers
         [Authorize]
         public IActionResult Edit(int id)
         {
-            var thisPost = _db.Posts.FirstOrDefault(p => p.Id == id);
+            var thisPost = _db.Posts.FirstOrDefault(p => p.PostId == id);
             return View(thisPost);
-
         }
 
         [Authorize]
@@ -69,9 +68,8 @@ namespace Portfolio.Controllers
         [Authorize]
         public IActionResult Delete(int id)
         {
-            var thisPost = _db.Posts.FirstOrDefault(p => p.Id == id);
+            var thisPost = _db.Posts.FirstOrDefault(p => p.PostId == id);
             return View(thisPost);
-
         }
 
         [Authorize]
@@ -80,13 +78,10 @@ namespace Portfolio.Controllers
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
-            Post thisPost = _db.Posts.FirstOrDefault(p => p.Id == id);
+            Post thisPost = _db.Posts.FirstOrDefault(p => p.PostId == id);
             _db.Remove(thisPost);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
-
-
-
     }
 }

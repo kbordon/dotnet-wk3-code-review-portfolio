@@ -20,12 +20,12 @@
 foreach (var post in Model)
     {
         <div class="post">
+            <p class="edit-id">@post.PostId</p>      
             <p>@Html.DisplayFor(model => post.Title)</p>
             <p>@post.Date.ToString("MMM dd, yyyy @ h:mm t")</p>
             <p>@Html.DisplayFor(model => post.Content)</p>
             @if(User.Identity.IsAuthenticated)
             {
-                <p class="edit-id" hidden>@post.Id</p>    
                 <span class="edit">Edit</span>
                 <span class="delete">Delete</span>
             }
@@ -33,7 +33,8 @@ foreach (var post in Model)
             <div class="comment-form"></div> 
             @if(post.Comments.Any())
             {
-                <p>Comments (post.Comments.Count)</p>
+                <p>Comments (@post.Comments.Count)</p>
+                <div class="comments"></div>
             }
         </div> 
     } 

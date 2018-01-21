@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Portfolio.Models;
+using Portfolio.ViewModels;
 
 namespace Portfolio.Controllers
 {
@@ -22,16 +23,18 @@ namespace Portfolio.Controllers
 
         public IActionResult Create(int id)
         {
-            Comment newComment = new Comment { PostId = id };
+            Comment newComment = new Comment { PostId = id }; 
             return View(newComment);
         }
 
         [HttpPost]
         public IActionResult Create(Comment newComment)
         {
+            newComment.CommentId = 0;
+            Console.WriteLine("################  " + newComment.PostId);
             _db.Comments.Add(newComment);
-            _db.SaveChanges();
-            return View("~/Post/Index");
+            _db.SaveChanges();  
+            return RedirectToAction("Index", "Post");
         }
     }
 }

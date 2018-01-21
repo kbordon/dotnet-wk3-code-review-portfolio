@@ -174,7 +174,7 @@ namespace Portfolio.Migrations
 
             modelBuilder.Entity("Portfolio.Models.Comment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CommentId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Author");
@@ -185,7 +185,7 @@ namespace Portfolio.Migrations
 
                     b.Property<int>("PostId");
 
-                    b.HasKey("Id");
+                    b.HasKey("CommentId");
 
                     b.HasIndex("PostId");
 
@@ -194,7 +194,7 @@ namespace Portfolio.Migrations
 
             modelBuilder.Entity("Portfolio.Models.Post", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PostId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Content");
@@ -205,7 +205,7 @@ namespace Portfolio.Migrations
 
                     b.Property<string>("UserId");
 
-                    b.HasKey("Id");
+                    b.HasKey("PostId");
 
                     b.HasIndex("UserId");
 
