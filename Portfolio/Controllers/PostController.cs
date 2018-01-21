@@ -25,7 +25,7 @@ namespace Portfolio.Controllers
 
         public IActionResult Index()
         {
-            return View(_db.Posts);
+            return View(_db.Posts.Include(p => p.Comments));
         }
 
         [Authorize]
