@@ -31,9 +31,17 @@ namespace Portfolio.Controllers
         public IActionResult Create(Comment newComment)
         {
             newComment.CommentId = 0;
-            Console.WriteLine("################  " + newComment.PostId);
             _db.Comments.Add(newComment);
             _db.SaveChanges();  
+            return RedirectToAction("Index", "Post");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            Comment thisComment = _db.Comments.FirstOrDefault(p => p.CommentId == id);
+            _db.Comments.Remove(thisComment);
+            _db.SaveChanges();
             return RedirectToAction("Index", "Post");
         }
     }

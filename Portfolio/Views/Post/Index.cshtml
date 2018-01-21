@@ -33,8 +33,15 @@ foreach (var post in Model)
             <div class="comment-form"></div> 
             @if(post.Comments.Any())
             {
-                <p>Comments (@post.Comments.Count)</p>
-                <div class="comments"></div>
+                <p class="see-comment"=>Comments (@post.Comments.Count)</p>
+                <div class="comments">
+                @foreach ( var comment in @post.Comments) 
+                {
+                    <h3>@comment.Author</h3>
+                    <p>@comment.Date.ToString("MMM dd, yyyy @ h:mm t")</p>
+                    <p>@comment.Content</p> 
+                }
+                </div>
             }
         </div> 
     } 
