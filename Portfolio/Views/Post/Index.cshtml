@@ -33,7 +33,8 @@ foreach (var post in Model)
             <div class="comment-form"></div> 
             @if(post.Comments.Any())
             {
-                <p class="see-comment"=>Comments (@post.Comments.Count)</p>
+                <p class="toggle-comment"><span class="see-comment">Comments (@post.Comments.Count)</span>
+                <span class="hide-comment">Hide Comments</span></p>
                 <div class="comments">
                 @foreach ( var comment in @post.Comments) 
                 {

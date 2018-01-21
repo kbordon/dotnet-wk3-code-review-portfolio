@@ -13,5 +13,10 @@ body {
 }
 
 .comments {
+    display: none;
     background-color: aquamarine;
+}
+
+.hide-comment {
+    display: none;
 }

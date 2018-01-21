@@ -44,19 +44,18 @@
             }
         });
     });
-    $('.see-comment').click(function(){
-        var x = $(this).parent().find(".edit-id").text();
-        var y = ".edit-id:contains('" + x + "')";
-        var z = $(this).text();
-        if ($(y).parent().find(".comments").is(':visible')) {
-            $(y).parent().find(".comments").css("display", "none");
-            $(this).text("Hide Comments");
-        } else {
-            $(y).parent().find(".comments").css("display", "block");
-            $(this).css("background-color", "pink");
-            $(this).text(z);
-
+    $('.toggle-comment').click(function(){
+        if ($(this).siblings('.comments').css('display') !== 'none') 
+        {
+            $(this).siblings('.comments').css('display', 'none');
+            $(this).find(".see-comment").css('display', 'inline');
+            $(this).find(".hide-comment").css('display', 'none');
         }
-        alert(z);
+        else
+        {
+            $(this).siblings('.comments').css('display', 'block');
+            $(this).find(".see-comment").css('display', 'none');
+            $(this).find(".hide-comment").css('display', 'inline');
+        }
     });
 })
