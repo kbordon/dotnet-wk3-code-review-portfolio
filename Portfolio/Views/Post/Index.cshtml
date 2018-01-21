@@ -20,7 +20,7 @@
     {
         <div class="post">
             <p>@Html.DisplayFor(model => post.Title)</p>
-            <p>@Html.DisplayFor(model => post.Date)</p>
+            <p>@post.Date.ToString("MMM dd, yyyy @ h:mm t")</p>
             <p>@Html.DisplayFor(model => post.Content)</p>
             @if(User.Identity.IsAuthenticated)
             {
@@ -29,6 +29,11 @@
                 <p class="edit">Edit</p>
                 <p class="delete">Delete</p>
             }
+            <div class="review">
+                foreach (var review in post.Reviews)
+                {
+                }
+            </div>
         </div> 
     }
 }

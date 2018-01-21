@@ -172,6 +172,26 @@ namespace Portfolio.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Portfolio.Models.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Author");
+
+                    b.Property<string>("Content");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("PostId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("comments");
+                });
+
             modelBuilder.Entity("Portfolio.Models.Post", b =>
                 {
                     b.Property<int>("Id")
@@ -190,24 +210,6 @@ namespace Portfolio.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("posts");
-                });
-
-            modelBuilder.Entity("Portfolio.Models.Review", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Content");
-
-                    b.Property<DateTime>("Date");
-
-                    b.Property<int>("PostId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PostId");
-
-                    b.ToTable("reviews");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -247,19 +249,19 @@ namespace Portfolio.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("Portfolio.Models.Comment", b =>
+                {
+                    b.HasOne("Portfolio.Models.Post", "Post")
+                        .WithMany("Comments")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("Portfolio.Models.Post", b =>
                 {
                     b.HasOne("Portfolio.Models.BlogUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("Portfolio.Models.Review", b =>
-                {
-                    b.HasOne("Portfolio.Models.Post", "Post")
-                        .WithMany("Reviews")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

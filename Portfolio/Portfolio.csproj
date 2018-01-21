@@ -33,5 +33,6 @@
 
     <ItemGroup>
       <Compile Remove="Views\Account\LoginViewModel.cs" />
+      <Compile Remove="Controllers\ReviewController.cs" />
     </ItemGroup>
 </Project>
