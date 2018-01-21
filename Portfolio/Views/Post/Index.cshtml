@@ -25,7 +25,7 @@ foreach (var post in Model)
             <p>@Html.DisplayFor(model => post.Content)</p>
             @if(User.Identity.IsAuthenticated)
             {
-                <p class="edit-id" hidden> @post.Id</p>    
+                <p class="edit-id" hidden>@post.Id</p>    
                 <span class="edit">Edit</span>
                 <span class="delete">Delete</span>
             }

@@ -34,15 +34,14 @@
     });
     $('.comment-add').click(function(){
         var x = $(this).parent().find(".edit-id").text();
-        x = ".edit-id:contains('" + x + "')";
+        var y = ".edit-id:contains('" + x + "')";
         $.ajax({
             type: 'GET',
             dataType: 'html',
-            url: '/Comment/Create/',
+            url: '/Comment/Create/' + x,
             success: function(result){
-            $(x).siblings('.comment-form').html(result);
+            $(y).siblings('.comment-form').html(result);
             }   
         });
-        alert(x);
     });
 })

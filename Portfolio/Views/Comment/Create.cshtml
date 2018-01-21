@@ -1,6 +1,15 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model Portfolio.Models.Comment
+
+<h3>Add a Comment</h3>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.PostId)
+    <p>Name (optional)</p>
+    @Html.TextBoxFor(model => model.Author)
+    <br>
+    <br>
+    @Html.TextAreaFor(model => model.Content)
+    <br>
+    <br>
+    <input type="submit" value="Submit" />
 }
- commment form.
