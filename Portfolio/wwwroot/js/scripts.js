@@ -50,10 +50,8 @@
             $(y).siblings('.comment-form').html(result);
             }
         });
-        alert(window.location.href);
-        var currentUrl = window.location.href;
-        console.log(currentUrl.toString().includes('Entry'));
     });
+
 
 
     // toggles visibility of each post's comment section
