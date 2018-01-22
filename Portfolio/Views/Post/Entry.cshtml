@@ -1,0 +1,35 @@
+﻿@model Portfolio.Models.Post
+
+@{
+    ViewData["Title"] = "Portfolio :: Blog" + @Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="entry-container">
+    <p class="edit-id" hidden>@Model.PostId</p>
+    <h1>@Model.Title</h1>
+    <h2><em>@Model.Date.ToString("MMM d, yyyy @ hh:mm t")</em></h2> 
+    <p class="entry-body">@Model.Content</p>
+    <span class="comment-add">Add a Comment</span>
+    <div class="comment-form"></div>
+    <div class="entry-comments">
+                @if (Model.Comments.Any())
+                {
+                    <p>@Model.Comments.Count Comments</p>
+                    foreach (var comment in Model.Comments.OrderByDescending(c => c.Date))
+                    {
+                        if(comment.Author == null)
+                        { 
+                            <h4><em>anonymous</em></h4>
+                        }
+                        else
+                        {
+                            <h3>@comment.Author</h3>
+                        }
+                        <p><em>@comment.Date</em></p>
+                        <p>@comment.Content</p>
+                        <p>Delete</p>
+                    }
+                }
+    </div>
+</div>

@@ -1,4 +1,5 @@
 ﻿$(document).ready(function(){
+    // displays form to add post
     $('#create').click(function(){
         $.ajax({
             type: 'GET',
@@ -9,6 +10,8 @@
             }   
         });
     });
+
+    // displays form to edit post
     $('.edit').click(function(){
         var x = $(this).parent().find(".edit-id").text();
         $.ajax({
@@ -21,6 +24,8 @@
         });
             alert(x);   
     });
+
+    // displays form to delete post
     $('.delete').click(function(){
         var x = $(this).parent().find(".edit-id").text();
         $.ajax({
@@ -32,6 +37,8 @@
             }   
         });
     });
+
+    // displays form to add a comment
     $('.comment-add').click(function(){
         var x = $(this).parent().find(".edit-id").text();
         var y = ".edit-id:contains('" + x + "')";
@@ -43,7 +50,10 @@
             $(y).siblings('.comment-form').html(result);
             }
         });
+        alert(x);
     });
+
+    // toggles visibility of each post's comment section
     $('.toggle-comment').click(function(){
         if ($(this).siblings('.comments').css('display') !== 'none') 
         {
@@ -58,4 +68,7 @@
             $(this).find(".hide-comment").css('display', 'inline');
         }
     });
+    
+
+
 })

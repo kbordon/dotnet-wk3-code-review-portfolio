@@ -32,8 +32,9 @@ namespace Portfolio.Controllers
         {
             newComment.CommentId = 0;
             _db.Comments.Add(newComment);
-            _db.SaveChanges();  
+            _db.SaveChanges();
             return RedirectToAction("Index", "Post");
+            //return Json(newComment);
         }
 
         [HttpPost]

@@ -20,7 +20,7 @@
 foreach (var post in Model)
     {
         <div class="post">
-            <p class="edit-id">@post.PostId</p>      
+            <p class="edit-id" hidden>@post.PostId</p>      
             <p>@Html.DisplayFor(model => post.Title)</p>
             <p>@post.Date.ToString("MMM dd, yyyy @ h:mm t")</p>
             <p>@Html.DisplayFor(model => post.Content)</p>
@@ -29,6 +29,7 @@ foreach (var post in Model)
                 <span class="edit">Edit</span>
                 <span class="delete">Delete</span>
             }
+            @Html.ActionLink("Go to this specific entry page", "Entry", new { id = @post.PostId})
             <span class="comment-add">Add a Comment</span>
             <div class="comment-form"></div> 
             @if(post.Comments.Any())

@@ -28,6 +28,11 @@ namespace Portfolio.Controllers
             return View(_db.Posts.Include(p => p.Comments));
         }
 
+        public IActionResult Entry(int id)
+        {
+            return View(_db.Posts.Include(p => p.Comments).FirstOrDefault(p => p.PostId == id));
+        }
+
         [Authorize]
         public IActionResult Create()
         {

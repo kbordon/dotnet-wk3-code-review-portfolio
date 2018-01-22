@@ -1,8 +1,10 @@
 ﻿@model Portfolio.Models.Comment
+    <script src="~/js/comment.js"></script>
 
 
+this was changed marginally yet again.
 <h3>Add a Comment</h3>
-@using (Html.BeginForm())
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "comment-create" }))
 {
     @Html.HiddenFor(model => model.PostId)
     <p>Name (optional)</p>
