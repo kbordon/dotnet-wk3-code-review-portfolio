@@ -29,7 +29,7 @@ foreach (var post in Model)
                 <span class="edit">Edit</span>
                 <span class="delete">Delete</span>
             }
-            @Html.ActionLink("Go to this specific entry page", "Entry", new { id = @post.PostId})
+            @Html.ActionLink("permalink", "Entry", new { id = @post.PostId})
             <span class="comment-add">Add a Comment</span>
             <div class="comment-form"></div> 
             @if(post.Comments.Any())

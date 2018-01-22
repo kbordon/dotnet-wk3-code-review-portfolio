@@ -53,7 +53,7 @@ namespace Portfolio.Controllers
             Comment thisComment = _db.Comments.FirstOrDefault(p => p.CommentId == id);
             _db.Comments.Remove(thisComment);
             _db.SaveChanges();
-            return RedirectToAction("Index", "Post");
+            return RedirectToAction("Entry", "Post", new { id = thisComment.PostId});
         }
     }
 }
