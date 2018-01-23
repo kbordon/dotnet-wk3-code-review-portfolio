@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Portfolio.Models;
 using Microsoft.AspNetCore.Identity;
 using Portfolio.ViewModels;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Portfolio.Controllers
 {
@@ -24,10 +25,12 @@ namespace Portfolio.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _db = db;
         }
 
         public IActionResult Index()
         {
+            
             return View(_db.Roles.ToList());
         }
 
@@ -39,11 +42,26 @@ namespace Portfolio.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(RegisterRole registerRole)
         {
+            
             BlogRole role = new BlogRole
             {
                 Name = registerRole.RoleName
             };
-            return RedirectToAction("Create");
+
+            IdentityResult result = await _roleManager.CreateAsync(role);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        public IActionResult Manage()
+        {
+            ManageRole manager = new ManageRole
+            {
+                BlogRoles = _db.Roles.ToList()
+            };
+            manager.SetSelectList();
+            return View(manager);
         }
     }
 }

@@ -1,10 +1,23 @@
-﻿using System;
-namespace Portfolio.Views.Role
-{
-	public class Manage
-	{
-		public Manage()
-		{
-		}
-	}
+﻿@model Portfolio.ViewModels.ManageRole
+
+@{
+    ViewData["Title"] = "Portfolio :: Blog :: ROLES";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
 }
+
+@Html.ActionLink("Create New Role", "Create") | @Html.ActionLink("Manage Roles", "Manage")
+
+<h2>Role Add to User</h2>
+
+@using (Html.BeginForm("AddRoleToUser"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+        Username: @Html.TextBoxFor(model => model.BlogRoleUserName)
+    </p> 
+    <p>
+        Role: @Html.DropDownListFor(model => model.BlogRoleAssignment, Model.RolesToSelect, Model.RolesToSelect.Text, "Value")
+    </p>
+}  
