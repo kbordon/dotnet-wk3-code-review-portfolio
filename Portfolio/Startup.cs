@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Portfolio.Models;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Portfolio
 {
@@ -35,12 +29,12 @@ namespace Portfolio
                                               options
                                                    .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
 
-            services.AddIdentity<BlogUser, IdentityRole>()
+            services.AddIdentity<BlogUser, BlogRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
             // remove this.
-            services.AddIdentity<BlogUser, IdentityRole>(options =>
+            services.AddIdentity<BlogUser, BlogRole>(options =>
             {
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;

@@ -19,7 +19,7 @@ namespace Portfolio.Models
                 entity.Property(m => m.NormalizedUserName).HasMaxLength(127);
                 entity.Property(m => m.UserName).HasMaxLength(127);
             });
-            builder.Entity<IdentityRole>(entity => {
+            builder.Entity<BlogRole>(entity => {
                 entity.Property(m => m.Name).HasMaxLength(127);
                 entity.Property(m => m.NormalizedName).HasMaxLength(127);
             });

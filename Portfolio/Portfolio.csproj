@@ -17,6 +17,7 @@
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="Views\Comment\" />
+    <Folder Include="Views\Role\" />
   </ItemGroup>
 
   <ItemGroup>

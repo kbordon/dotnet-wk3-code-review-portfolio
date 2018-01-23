@@ -1,0 +1,20 @@
+﻿@model Portfolio.ViewModels.Create
+@{
+    ViewData["Title"] = "Portfolio :: Blog :: Roles :: Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Role</h2>
+@Html.ActionLink("List Roles", "Index") | @Html.ActionLink("Manage User Roles", "Manage")
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>Role Name</p>
+    <p>
+      @Html.TextBox(model => model.RoleName)
+    </p>
+    <input type="submit" value="Save"/> 
+}
