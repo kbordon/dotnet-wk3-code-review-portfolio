@@ -20,3 +20,19 @@ body {
 .hide-comment {
     display: none;
 }
+
+#menu-blog:hover {
+    background-color: bisque;
+}
+
+#menu-blog:active {
+    animation-name: blog;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes blog {
+    from { background-color: yellow;}
+    to { background-color: lawngreen;}
+}

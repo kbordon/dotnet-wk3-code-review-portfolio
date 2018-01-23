@@ -10,15 +10,7 @@
     <link rel="stylesheet" type="text/css" href="~/css/master.css"> 
 </head>
 <body>
-        
-    <div>
-        @Html.ActionLink("Home", "Index", "Home")
-        @Html.ActionLink("Blog", "Index", "Post")
-        @Html.ActionLink("Log In", "Index", "Account")
-        <a href="#about">Work</a>
-        <a href="#contact">Contact</a>
-    </div>
-
+   @Html.Partial("Header") 
     <div>
         @RenderBody()
     </div>
