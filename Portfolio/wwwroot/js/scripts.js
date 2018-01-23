@@ -52,8 +52,6 @@
         });
     });
 
-
-
     // toggles visibility of each post's comment section
     $('.toggle-comment').click(function(){
         if ($(this).siblings('.comments').css('display') !== 'none') 
@@ -69,7 +67,16 @@
             $(this).find(".hide-comment").css('display', 'inline');
         }
     });
-    
+
+    if(location.href.includes('Post') && !document.referrer.includes('Post')) {
+        //$('#menu-blog').addClass('menu-blog-active');
+        $('.menu-main').addClass('menu-inactive');
+    } else if (location.href.includes('Post')){
+        //$('#menu-blog').removeClass('menu-blog-active').addClass('menu-blog-standby');
+        $('.menu-main').removeClass('menu-inactive').addClass('menu-standby');
+    } else if (document.referrer != 'http://localhost:5000/'){
+        $('.menu-main').remove('menu-standby').addClass('menu-active');
+    };
 
 
 })

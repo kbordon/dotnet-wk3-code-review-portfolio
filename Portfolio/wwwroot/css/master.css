@@ -21,18 +21,81 @@ body {
     display: none;
 }
 
+
+/*#menu-blog {
+    transform: translateX(0);
+}
 #menu-blog:hover {
     background-color: bisque;
 }
 
-#menu-blog:active {
-    animation-name: blog;
-    animation-duration: 5s;
-    animation-fill-mode: forwards;
-
+@keyframes blog {
+    from { background-color: bisque;
+           transform: translateX(0);
+    }
+    to { background-color: lawngreen;
+         transform: translateX(-30px);
+    }
 }
 
-@keyframes blog {
-    from { background-color: yellow;}
-    to { background-color: lawngreen;}
+.menu-blog-active {
+    animation-name: blog;
+    animation-duration: 2.5s;
+    animation-fill-mode: forwards;
+}
+
+.menu-blog-standby {
+    background-color: lawngreen;
+    position: relative;
+    left: -30px;
+}*/ 
+
+#header
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+@keyframes menu-hide {
+    from {
+        transform: translateY(0)
+    }
+
+    to {
+        transform: translateY(-100%)
+    }
+}
+
+@keyframes menu-return {
+    from {transform: translateY(-100%);}
+    to {transform: translateY(0);}
+    
+}
+
+.menu-main {
+    tranform: translateY(0);
+}
+
+/*.menu-inactive {
+    transform: translateY(-10px);
+}*/ 
+
+.menu-inactive {
+    animation-name: menu-hide;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;    
+}
+  
+.menu-standby {
+    position: relative;
+    top: -100px;
+    background-color: purple;
+    transform: translateY(-100%); 
+}
+
+.menu-active {
+    animation-name: menu-return;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
 }
