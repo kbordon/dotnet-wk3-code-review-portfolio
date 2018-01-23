@@ -68,15 +68,18 @@
         }
     });
 
+    //controls menu animation
+    // when going to blog section
     if(location.href.includes('Post') && !document.referrer.includes('Post')) {
         //$('#menu-blog').addClass('menu-blog-active');
         $('.menu-main').addClass('menu-inactive');
-    } else if (location.href.includes('Post')){
+    } else if (location.href.includes('Post')){ // when still in the blog section
         //$('#menu-blog').removeClass('menu-blog-active').addClass('menu-blog-standby');
         $('.menu-main').removeClass('menu-inactive').addClass('menu-standby');
-    } else if (document.referrer != 'http://localhost:5000/'){
+    } else if (!location.href.includes('Post') && !document.referrer.includes('Post')) { // when reloading homepage
+        $('menu-main').addClass('menu-standby');
+    } else if (document.referrer != 'http://localhost:5000/'){ // returning to main menu
         $('.menu-main').remove('menu-standby').addClass('menu-active');
     };
-
 
 })

@@ -3,9 +3,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+html {
+    height: 100%;
+    overflow: hidden;
+}
 
 body {
+    height: 100%;
     background-color: azure;
+    overflow: auto;
 }
 
 .post {
@@ -48,12 +54,22 @@ body {
     background-color: lawngreen;
     position: relative;
     left: -30px;
-}*/ 
+}*/
+
 
 #header
 {
+    position: fixed;
     display: flex;
+    top: 0;
+    left: 0;
+    right: 0;
     justify-content: space-between;
+    padding: 5%;
+    height: 20%;
+    background-color: hotpink;
+    align-items: center;
+
 }
 
 
@@ -63,12 +79,12 @@ body {
     }
 
     to {
-        transform: translateY(-100%)
+        transform: translateY(-1000%)
     }
 }
 
 @keyframes menu-return {
-    from {transform: translateY(-100%);}
+    from {transform: translateY(-1000%);}
     to {transform: translateY(0);}
     
 }
@@ -91,11 +107,16 @@ body {
     position: relative;
     top: -100px;
     background-color: purple;
-    transform: translateY(-100%); 
+    transform: translateY(-1000%); 
 }
 
 .menu-active {
     animation-name: menu-return;
     animation-duration: 1s;
     animation-fill-mode: forwards;
+}
+
+#layout-container {
+    margin-top: 15%;
+    background-color: yellow;
 }
