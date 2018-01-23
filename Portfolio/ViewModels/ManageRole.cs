@@ -16,15 +16,11 @@ namespace Portfolio.ViewModels
         public IEnumerable<IdentityRole> BlogRoles { get; set; }
         public string BlogRoleUserName { get; set; }
         public string BlogRoleAssignment { get; set; }
-        public IEnumerable<SelectListItem> RolesToSelect { get; set; }
+        public SelectList RolesToSelect { get; set; }
 
         public void SetSelectList()
         {
-            RolesToSelect = BlogRoles.Select(role => new SelectListItem()
-            {
-                Text = role.Name.ToString(),
-                Value = role.Name.ToString()
-            });
+            RolesToSelect = new SelectList(BlogRoles, "Name", "Name");
         }
     }
 }

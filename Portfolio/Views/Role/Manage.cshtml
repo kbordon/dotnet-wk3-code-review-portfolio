@@ -18,6 +18,17 @@
         Username: @Html.TextBoxFor(model => model.BlogRoleUserName)
     </p> 
     <p>
-        Role: @Html.DropDownListFor(model => model.BlogRoleAssignment, Model.RolesToSelect, Model.RolesToSelect.Text, "Value")
+        Role: @Html.DropDownListFor(model => model.BlogRoleAssignment, (IEnumerable<SelectListItem>)Model.RolesToSelect, "Select..")
     </p>
+    <input type="submit" value="Save"/>
 }  
+
+<h2>Get Roles for a User</h2>
+@using (Html.BeginForm("GetRoles"))
+{
+    @Html.AntiForgeryToken()
+    <p>
+        Username: @Html.TextBoxFor(model => model.BlogRoleUserName)
+    </p>
+    <input type="submit" value="Retrieve Roles"/>
+}

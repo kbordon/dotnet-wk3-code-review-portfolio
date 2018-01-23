@@ -63,5 +63,7 @@ namespace Portfolio.Controllers
             manager.SetSelectList();
             return View(manager);
         }
+
+        [HttpPost]
     }
 }
