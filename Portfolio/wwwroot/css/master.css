@@ -1,4 +1,6 @@
-﻿* {
+﻿@import url('https://fonts.googleapis.com/css?family=Lato|Racing+Sans+One');
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,8 +14,12 @@ body {
     height: 100%;
     background-color: azure;
     overflow: auto;
+    font-family: 'Lato', sans-serif; 
 }
 
+h1, h2, h3, h4, h5 {
+    font-family: 'Racing Sans One', cursive;
+}
 .post {
     background-color: orange;
 }
@@ -72,6 +78,15 @@ body {
 
 }
 
+#header a {
+    font-family: 'Racing Sans One', cursive;
+    font-size: 300%;
+    text-decoration: none;
+    color: white;
+}
+#header a:hover {
+    text-shadow: -2px 2px 0 black;
+}
 
 @keyframes menu-hide {
     from {
