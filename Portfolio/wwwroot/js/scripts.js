@@ -1,4 +1,16 @@
 ﻿$(document).ready(function(){
+    // displays form to log in
+    $('#log-in').click(function(){
+        $.ajax({
+            type: 'GET',
+            dataType: 'html',
+            url: '/Account/Login',
+            success: function(result){
+            $('#form-log').html(result);
+            }
+        });
+    }); 
+
     // displays form to add post
     $('#create').click(function(){
         $.ajax({
