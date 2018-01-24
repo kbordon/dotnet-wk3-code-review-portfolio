@@ -66,6 +66,7 @@ namespace Portfolio.Controllers
         {
             var user = _db.Users.Where(u => u.UserName == UserName).FirstOrDefault();
             await _userManager.AddToRoleAsync(user, RoleName);
+
             return RedirectToAction("Manage");
         }
 

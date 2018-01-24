@@ -39,6 +39,8 @@ namespace Portfolio.Controllers
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
+                // new registered users are automatically assigned USER role.
+                await _userManager.AddToRoleAsync(user, "USER");
                 return RedirectToAction("Index");
             }
             else 
@@ -51,20 +53,6 @@ namespace Portfolio.Controllers
         {
             return View();
         }
-
-        //[HttpPost]
-        //public async Task<IActionResult> Login(LoginViewModel model)
-        //{
-        //    Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
-        //    if(result.Succeeded)
-        //    {
-        //        return RedirectToAction("Index");
-        //    }
-        //    else
-        //    {
-        //        return View();
-        //    }  
-        //}
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
