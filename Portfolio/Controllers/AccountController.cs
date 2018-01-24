@@ -22,6 +22,7 @@ namespace Portfolio.Controllers
             _db = db;
         }
 
+        // Maybe not used.
         public IActionResult Index()
         {
             return View();
@@ -35,13 +36,25 @@ namespace Portfolio.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model )
         {
-            var user = new BlogUser { UserName = model.Email };
+            var user = new BlogUser
+            {
+                UserName = model.UserName,
+                Email = model.Email
+            };
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
                 // new registered users are automatically assigned USER role.
                 await _userManager.AddToRoleAsync(user, "USER");
-                return RedirectToAction("Index");
+                Microsoft.AspNetCore.Identity.SignInResult signInResult = await _signInManager.PasswordSignInAsync(user, model.Password, isPersistent: true, lockoutOnFailure: false);
+                if (signInResult.Succeeded)
+                {
+                    return RedirectToAction("Index", "Post");
+                }
+                else
+                {
+                    return View("Index");
+                }
             }
             else 
             {
@@ -57,7 +70,8 @@ namespace Portfolio.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
+            
+            Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, isPersistent: true, lockoutOnFailure: false);
             if (result.Succeeded)
             {
                 return RedirectToAction("Index", "Post");
@@ -72,7 +86,7 @@ namespace Portfolio.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Post");
         }
 
     }

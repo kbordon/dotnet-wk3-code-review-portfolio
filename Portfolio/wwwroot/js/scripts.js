@@ -1,6 +1,7 @@
 ﻿$(document).ready(function(){
     // displays form to log in
     $('#log-in').click(function(){
+        $('#form-log').css("display", "flex");
         $.ajax({
             type: 'GET',
             dataType: 'html',
@@ -9,7 +10,7 @@
             $('#form-log').html(result);
             }
         });
-    }); 
+    });
 
     // displays form to add post
     $('#create').click(function(){
