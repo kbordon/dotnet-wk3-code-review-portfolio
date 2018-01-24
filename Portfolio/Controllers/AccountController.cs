@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Portfolio.Models;
 using Portfolio.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace Portfolio.Controllers
 {
@@ -70,15 +71,21 @@ namespace Portfolio.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            
-            Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, isPersistent: true, lockoutOnFailure: false);
-            if (result.Succeeded)
+            if (!string.IsNullOrWhiteSpace(model.UserName))
             {
-                return RedirectToAction("Index", "Post");
+                Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, isPersistent: true, lockoutOnFailure: false);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Post");
+                }
+                else
+                {
+                    return View("Index");
+                } 
             }
             else
             {
-                return View();
+                return View("Index");
             }
         }
 

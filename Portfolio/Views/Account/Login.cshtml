@@ -1,7 +1,11 @@
 ﻿@using Portfolio.ViewModels
 @model LoginViewModel
-<script type="text/javascript">
+<script type="text/javascript"> 
      $('#register').click(function(){
+        if (!'#form-log'.length())
+        {
+            this isn't here!
+        }
         $.ajax({
             type: 'GET',
             dataType: 'html',
@@ -11,20 +15,25 @@
             }
         });
      })
+    // exit modal
+    $('.exit').click(function(){
+        $('#form-log').css("display", "none");
+    });
+
 </script>
 <div class="modal-form">
-<h2>Log In</h2>
-@using (Html.BeginForm())
-{
-    @Html.LabelFor(m => m.UserName)
-    @Html.TextBoxFor(m => m.UserName)
-    <br>
-    @Html.LabelFor(m => m.Password)
-    @Html.PasswordFor(m => m.Password)
-   
-    <input type="submit" value="Log In"/>
-}
- 
-<p id="register" class="p-link">Don't have an account? Register here.</p>
+    <div class="exit">✕</div>
+    <h2>Log In</h2>
+    @using (Html.BeginForm())
+    {
+        <p>Username</p>
+        @Html.TextBoxFor(m => m.UserName, new {@required="required"})
+        <br>
+        <p>Password</p>
+        @Html.PasswordFor(m => m.Password, new {@required="required"})
+        <input type="submit" value="Log In"/>
+    }
+     
+    <p id="register" class="p-link">Don't have an account? Register here.</p>
 </div>
 

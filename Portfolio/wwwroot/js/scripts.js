@@ -1,4 +1,12 @@
 ﻿$(document).ready(function(){
+    console.log(window.location.href);
+    console.log("from " + document.referrer);
+
+    if (window.location.href === "http://localhost:5000/Account/Login" && document.referrer === "http://localhost:5000/Post")
+    {
+        alert("hi!");
+
+    }
     // displays form to log in
     $('#log-in').click(function(){
         $('#form-log').css("display", "flex");
@@ -10,6 +18,11 @@
             $('#form-log').html(result);
             }
         });
+    });
+
+    // exit modal
+    $('.exit').click(function(){
+        $('#form-log').css("display", "none");
     });
 
     // displays form to add post

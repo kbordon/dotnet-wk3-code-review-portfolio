@@ -12,7 +12,7 @@ html {
 
 body {
     height: 100%;
-    background-color: azure;
+    background-color: yellow;
     overflow: auto;
     font-family: 'Lato', sans-serif; 
 }
@@ -21,7 +21,7 @@ h1, h2, h3, h4, h5 {
     font-family: 'Racing Sans One', cursive;
 }
 .post {
-    background-color: orange;
+    /*background-color: white;*//
 }
 
 .comments {
@@ -73,7 +73,6 @@ h1, h2, h3, h4, h5 {
     justify-content: space-between;
     padding: 5%;
     height: 20%;
-    background-color: hotpink;
     align-items: center;
 
 }
@@ -82,11 +81,13 @@ h1, h2, h3, h4, h5 {
     font-family: 'Racing Sans One', cursive;
     font-size: 300%;
     text-decoration: none;
-    color: white;
+    color: white;
+    text-shadow: -2px 2px 0 black
 }
-#header a:hover {
-    text-shadow: -2px 2px 0 black;
-}
+
+    #header a:hover {
+        color: hotpink;
+    }
 
 @keyframes menu-hide {
     from {
@@ -150,9 +151,16 @@ div#form-log {
 }
 
 .modal-form {
+    position: relative;
     width: 50%;
     background-color: aqua;
     padding: 30px;
+    padding-top: 15px; 
+}
+
+.modal-form h2 {
+    text-align: center;
+    margin-bottom: 20px; 
 }
 
 .modal-form p {
@@ -169,7 +177,7 @@ div#form-log {
     border: none
 }
 
-.modal-form input[type=text],input[type=password] {
+.modal-form input[type=text], input[type=password] {
     padding: 5px;
 }
 
@@ -180,6 +188,7 @@ div#form-log {
     background-color: springgreen;
     border: none;
     box-shadow: none;
+    cursor: pointer;
 
 }
 
@@ -198,4 +207,23 @@ div#form-log {
 .p-link:hover {
     color: mediumspringgreen;
     cursor: pointer;
+}
+
+.exit {
+    text-align: center;
+    font-size: 10px;
+    background-color: red;
+    width: 14px;
+    padding: 2px;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border: 1px solid red;
+}
+
+.exit:hover {
+    color: red;
+    background-color: white;
+    border: 1px solid red;
 }

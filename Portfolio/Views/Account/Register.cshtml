@@ -1,7 +1,12 @@
 ﻿@using Portfolio.ViewModels
-
+<script type="text/javascript">
+    $('.exit').click(function(){
+        $('#form-log').css("display", "none");
+    });
+</script>
 @model RegisterViewModel
 <div class="modal-form">
+        <div class="exit">✕</div>
     <h2>Register </h2>
     @using (Html.BeginForm("Register", "Account", FormMethod.Post))
     {

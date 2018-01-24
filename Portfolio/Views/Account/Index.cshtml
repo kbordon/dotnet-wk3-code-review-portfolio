@@ -1,23 +1,26 @@
-﻿
+﻿@model Portfolio.ViewModels.LoginViewModel
 @{
     ViewData["Title"] = "Portfolio :: Blog"; 
     Layout = "~/Views/Shared/_Layout.cshtml"; 
 }
 
 @using System.Security.Claims
-<h1>blog partial?</h1>
-hey there345
-@if (User.Identity.IsAuthenticated)
-{
-    <p>@User.Identity.Name</p>
-    using (Html.BeginForm("LogOut", "Account"))
+<h1>Log in Failed 😰</h1>
+<h2>Please try again.</h2>
+Either that account doesn't exist or password was incorrect.
+ 
+<div class="modal-form">  
+    <h2>Log In</h2>
+    @using (Html.BeginForm())
     {
-        <input type="submit" value="Log Out"/> 
-    }  
-}
-else
-{
-    <p>@Html.ActionLink("Log in", "Login")</p>
-    <p>@Html.ActionLink("Register", "Register")</p>
-
-}  
+        <p>Username</p>
+        @Html.TextBoxFor(m => m.UserName, new {@required="required"})
+        <br>
+        <p>Password</p>
+        @Html.PasswordFor(m => m.Password, new {@required="required"})
+        <input type="submit" value="Log In"/>
+    }
+     
+      
+    <p id="register" class="p-link">Don't have an account? Register here.</p>
+</div>
