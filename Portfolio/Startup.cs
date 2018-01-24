@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Portfolio.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Portfolio
 {
@@ -48,8 +49,9 @@ namespace Portfolio
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, UserManager<BlogUser> userManager, RoleManager<BlogRole> roleManager)
         {
             app.UseIdentity();
-            app.UseStaticFiles();
 
+            app.UseStaticFiles();
+            BlogIdentityDataIntializer.SeedData(userManager, roleManager);
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -66,7 +68,7 @@ namespace Portfolio
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Something did not load");
+                await context.Response.WriteAsync("Something did not load.");
             });
         }
     }

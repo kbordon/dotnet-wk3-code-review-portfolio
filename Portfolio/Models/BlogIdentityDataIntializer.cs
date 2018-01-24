@@ -22,7 +22,7 @@ namespace Portfolio.Models
 
                 if (result.Succeeded)
                 {
-                    userManager.AddToRoleAsync(user, "Admin").Wait();
+                    userManager.AddToRoleAsync(user, "ADMIN").Wait();
                 }
             }
 
@@ -35,24 +35,24 @@ namespace Portfolio.Models
 
                 if (result.Succeeded)
                 {
-                    userManager.AddToRoleAsync(user, "User").Wait();
+                    userManager.AddToRoleAsync(user, "USER").Wait();
                 }
             }
         }
 
         public static void SeedRoles(RoleManager<BlogRole> roleManager)
         {
-            if(!roleManager.RoleExistsAsync("NormalUser").Result)
+            if(!roleManager.RoleExistsAsync("USER").Result)
             {
                 BlogRole role = new BlogRole();
-                role.Name = "User";
+                role.Name = "USER";
                 IdentityResult roleResult = roleManager.CreateAsync(role).Result;
             }
 
-            if(!roleManager.RoleExistsAsync("Administrator").Result)
+            if(!roleManager.RoleExistsAsync("ADMIN").Result)
             {
                 BlogRole role = new BlogRole();
-                role.Name = "Adminstration";
+                role.Name = "ADMIN";
                 IdentityResult roleResult = roleManager.CreateAsync(role).Result;
             }
         }

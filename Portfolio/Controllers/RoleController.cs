@@ -76,8 +76,10 @@ namespace Portfolio.Controllers
             if (!string.IsNullOrWhiteSpace(UserName))
             {
                 BlogUser user = _db.Users.Where(u => u.UserName == UserName).FirstOrDefault();
-
-                ViewBag.RolesForThisUser = await _userManager.GetRolesAsync(user);
+                if ( user != null)
+                {
+					ViewBag.RolesForThisUser = await _userManager.GetRolesAsync(user);   
+                }
             }
             ViewBag.RoleList = new SelectList(_db.Roles, "Name", "Name");
             return View("Manage");
