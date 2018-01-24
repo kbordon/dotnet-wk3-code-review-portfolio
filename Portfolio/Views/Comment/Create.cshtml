@@ -1,19 +1,24 @@
 ﻿@model Portfolio.Models.Comment
+@using System.Security.Claims
+ 
 @{
 }  
 <script src="~/js/comment.js"></script>
 
-this was changed marginally yet again.
 <h3>Add a Comment</h3>
 @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "comment-create" }))
 {
     @Html.HiddenFor(model => model.PostId)
-    <p>Name (optional)</p>
-    @Html.TextBoxFor(model => model.Author)
-    <br>
-    <br>
+    @if(User.Identity.Name == null)
+    {
+        <p>Name (optional)</p>
+        @Html.TextBoxFor(model => model.Author)
+    }
+    else
+    {
+        <p>@User.Identity.Name</p>
+    }
     @Html.TextAreaFor(model => model.Content)
-    <br>
-    <br>
+    <br/>
     <input type="submit" value="Submit" />
 }

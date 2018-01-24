@@ -10,12 +10,20 @@
 @if (User.Identity.IsAuthenticated)
 {
     @User.Identity.Name
+    using (Html.BeginForm("LogOut", "Account"))
+    {
+        <input type="submit" value="Log Out"/> 
+    }  
     if(User.IsInRole("ADMIN"))
     {
         <p id="create">Add Post</p>
     }
 }
-
+else
+{
+    @Html.ActionLink("Log In", "Login", "Account") 
+}
+<div id="form-log"></div> 
 <div id="form"></div>
 
 @if (Model.Any())  
@@ -56,5 +64,4 @@ else
     <p><em>No posts yet.</em></p>
 }
 
-@Html.ActionLink("LOG IN", "Login", "Account") 
   
