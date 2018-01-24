@@ -8,8 +8,8 @@
 <div class="entry-container">
     <p class="edit-id" hidden>@Model.PostId</p>
     <h1>@Model.Title</h1>
-    <h2><em>@Model.Date.ToString("MMM d, yyyy @ hh:mm t")</em></h2> 
-    <p class="entry-body">@Model.Content</p>
+    <h2><em>@Model.Date.ToString("MMM d, yyyy @ h:mm t")</em></h2>  
+    <p class="entry-body">@Model.Content</p> 
     <span class="comment-add">Add a Comment</span>
     <div class="comment-form"></div>
     <div class="entry-comments">
@@ -26,7 +26,7 @@
                         {
                             <h3>@comment.Author</h3>
                         }
-                        <p><em>@comment.Date</em></p>
+                        <p><em>@comment.Date.ToString("MMM d, yyyy @ h:mm t")</em></p>
                         <p>@comment.Content</p>
                         using (Html.BeginForm("Delete", "Comment", new { id = @comment.CommentId}))
                         {

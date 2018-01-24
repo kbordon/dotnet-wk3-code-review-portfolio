@@ -44,11 +44,14 @@ namespace Portfolio.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Post newPost)
         {
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var currentUser = await _userManager.FindByIdAsync(userId);
-            newPost.User = currentUser;
-            _db.Posts.Add(newPost);
-            _db.SaveChanges();
+            if (User.IsInRole("ADMIN"))
+            {
+                var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                var currentUser = await _userManager.FindByIdAsync(userId);
+                newPost.User = currentUser;
+                _db.Posts.Add(newPost);
+                _db.SaveChanges();   
+            }
             return RedirectToAction("Index");
         }
 

@@ -10,7 +10,10 @@
 @if (User.Identity.IsAuthenticated)
 {
     @User.Identity.Name
-    <p id="create">Add Post</p>
+    if(User.IsInRole("ADMIN"))
+    {
+        <p id="create">Add Post</p>
+    }
 }
 
 <div id="form"></div>
@@ -24,7 +27,7 @@ foreach (var post in Model.OrderByDescending(p => p.Date))
             <p>@Html.DisplayFor(model => post.Title)</p>
             <p>@post.Date.ToString("MMM dd, yyyy @ h:mm t")</p>
             <p>@Html.DisplayFor(model => post.Content)</p>
-            @if(User.Identity.IsAuthenticated)
+            @if(User.Identity.IsAuthenticated && User.IsInRole("ADMIN"))
             {
                 <span class="edit">Edit</span>
                 <span class="delete">Delete</span>
