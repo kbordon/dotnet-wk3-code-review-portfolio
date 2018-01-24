@@ -9,26 +9,52 @@
 
 <h2>Role Add to User</h2>
 
-@using (Html.BeginForm("AddRoleToUser"))
+@using (Html.BeginForm("AddRoleToUser", "Role"))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <p>
-        Username: @Html.TextBoxFor(model => model.BlogRoleUserName)
+        Username: @Html.TextBox("UserName")
     </p> 
     <p>
-        Role: @Html.DropDownListFor(model => model.BlogRoleAssignment, (IEnumerable<SelectListItem>)Model.RolesToSelect, "Select..")
+        Role: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.RoleList, "Select Role..")
     </p>
     <input type="submit" value="Save"/>
 }  
 
 <h2>Get Roles for a User</h2>
-@using (Html.BeginForm("GetRoles"))
+@using (Html.BeginForm("GetRoles", "Role"))
 {
     @Html.AntiForgeryToken()
     <p>
-        Username: @Html.TextBoxFor(model => model.BlogRoleUserName)
+        Username: @Html.TextBox("UserName")
     </p>
     <input type="submit" value="Retrieve Roles"/>
+}
+
+@if (ViewBag.RolesForThisUser != null)
+{
+    <h3>Roles for this User</h3>
+    <ul>
+        @foreach (string roleName in ViewBag.RolesForThisUser)
+        { 
+            <li>@roleName</li>
+        }
+    </ul>
+}
+
+<h3>Delete a User's Role</h3>
+
+@using (Html.BeginForm("DeleteUserRole", "Role"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+        Username: @Html.TextBox("UserName")
+        Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.RoleList, "Select Role...")
+    </p>
+
+    <input type="submit" value="Delete this role"/> 
 }

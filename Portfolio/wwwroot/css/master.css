@@ -114,7 +114,7 @@ h1, h2, h3, h4, h5 {
 
 .menu-inactive {
     animation-name: menu-hide;
-    animation-duration: 1s;
+    animation-duration: 2s;
     animation-fill-mode: forwards;    
 }
   

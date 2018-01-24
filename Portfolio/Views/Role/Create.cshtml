@@ -1,4 +1,4 @@
-﻿@model Portfolio.ViewModels.Create
+﻿@model Portfolio.ViewModels.RegisterRole
 @{
     ViewData["Title"] = "Portfolio :: Blog :: Roles :: Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,7 +14,7 @@
 
     <p>Role Name</p>
     <p>
-      @Html.TextBox(model => model.RoleName)
+      @Html.TextBoxFor(model => model.RoleName)
     </p>
     <input type="submit" value="Save"/> 
 }
