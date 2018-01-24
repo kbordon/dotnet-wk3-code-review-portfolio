@@ -30,6 +30,7 @@ namespace Portfolio.Controllers
 
         public IActionResult Entry(int id)
         {
+            // should i make the user virtual, or just hardcode the user id?
             return View(_db.Posts.Include(p => p.Comments).FirstOrDefault(p => p.PostId == id));
         }
 
