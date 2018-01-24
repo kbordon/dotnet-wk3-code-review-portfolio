@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Portfolio.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Identity;
 
 namespace Portfolio
 {
@@ -44,7 +45,7 @@ namespace Portfolio
 
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, UserManager<BlogUser> userManager, RoleManager<BlogRole> roleManager)
         {
             app.UseIdentity();
             app.UseStaticFiles();
