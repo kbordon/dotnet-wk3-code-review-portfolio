@@ -2,10 +2,6 @@
 @model LoginViewModel
 <script type="text/javascript"> 
      $('#register').click(function(){
-        if (!'#form-log'.length())
-        {
-            alert("this isn't here!");
-        }
         $.ajax({
             type: 'GET',
             dataType: 'html',
@@ -37,3 +33,4 @@
     <p id="register" class="p-link">Don't have an account? Register here.</p>
 </div>
 
+<div id="register-form">hiiii</div>

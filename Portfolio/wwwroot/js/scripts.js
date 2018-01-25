@@ -7,6 +7,24 @@
         alert("hi!");
 
     }
+
+    // on log-in failure page.
+    $('#register').click(function(){
+        if(!$('#form-log').length){
+            alert("hi");
+            $.ajax({
+                type: 'GET',
+                dataType: 'html',
+                url: '/Account/Register',
+                success: function(result){
+                    $('#register-form').html(result);
+                    $('.modal-form').first().css('display', 'none');
+                }
+            });
+        };
+     });
+
+
     // displays form to log in
     $('#log-in').click(function(){
         $('#form-log').css("display", "flex");
@@ -22,7 +40,13 @@
 
     // exit modal
     $('.exit').click(function(){
-        $('#form-log').css("display", "none");
+        if(!$('#form-log').length){
+            $('.modal-form').last().css('display', 'none');
+            $('.modal-form').first().css('display', 'none');
+            alert(":3")
+        } else {
+            $('#form-log').css("display", "none");
+        }
     });
 
     // displays form to add post
