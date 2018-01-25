@@ -81,7 +81,8 @@
     // displays form to delete post
     $('.delete').click(function(){
         $('#form').css("display", "flex");
-        var x = $(this).parent().find(".edit-id").text();
+        var x = $(this).parent().parent().find(".edit-id").text();
+        alert(x);
         $.ajax({
             type: 'GET',
             dataType: 'html',
