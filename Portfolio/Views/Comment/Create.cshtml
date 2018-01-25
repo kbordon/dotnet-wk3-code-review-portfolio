@@ -5,20 +5,23 @@
 }  
 <script src="~/js/comment.js"></script>
 
-<h3>Add a Comment</h3>
-@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "comment-create" }))
-{
-    @Html.HiddenFor(model => model.PostId)
-    @if(User.Identity.Name == null)
+<div class="modal-form">
+        <div class="exit">✕</div>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "comment-create" }))
     {
-        <p>Name (optional)</p>
-        @Html.TextBoxFor(model => model.Author)
+        @Html.HiddenFor(model => model.PostId)
+        <h2>comment?</h2>
+        @if(User.Identity.Name == null)
+        {
+            <p>Name (optional):</p>
+            @Html.TextBoxFor(model => model.Author)
+        }
+        else
+        {
+            <p>@User.Identity.Name:</p>
+        }
+        @Html.TextAreaFor(model => model.Content)
+        <br/>
+        <input type="submit" value="Submit" />
     }
-    else
-    {
-        <p>@User.Identity.Name</p>
-    }
-    @Html.TextAreaFor(model => model.Content)
-    <br/>
-    <input type="submit" value="Submit" />
-}
+</div>

@@ -12,16 +12,50 @@ html {
 
 body {
     height: 100%;
-    background-color: yellow;
+    background-color: springgreen;
     overflow: auto;
-    font-family: 'Lato', sans-serif; 
+    font-family: 'Lato', sans-serif;
+     
 }
 
 h1, h2, h3, h4, h5 {
     font-family: 'Racing Sans One', cursive;
 }
+
+#posts {
+    margin: 0 10%;
+}
+
 .post {
-    /*background-color: white;*//
+    padding: 5%;
+    padding-top: 2%;
+    background-color: white;
+    box-shadow: -5px 4px black;
+    margin-bottom: 10%;
+    /*-ms-transform: skewX(2deg);
+    -webkit-transform: skewX(2deg);
+    transform: skewX(2deg)*/;
+}
+
+/*modify for non-mobile*/ 
+h1.post-title {
+    position: relative;
+    bottom: 27px;
+    text-align: right;
+
+}
+
+p.post-date {
+    text-align: right;
+    font-size: small;
+    letter-spacing: 2px
+}
+
+p.post-body {
+    margin: 10% 0;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+
 }
 
 .comments {
@@ -74,6 +108,7 @@ h1, h2, h3, h4, h5 {
     padding: 5%;
     height: 20%;
     align-items: center;
+    z-index: 99;
 
 }
 
@@ -85,9 +120,9 @@ h1, h2, h3, h4, h5 {
     text-shadow: -2px 2px 0 black
 }
 
-    #header a:hover {
-        color: hotpink;
-    }
+#header a:hover {
+    color: yellow;
+}
 
 @keyframes menu-hide {
     from {
@@ -122,7 +157,6 @@ h1, h2, h3, h4, h5 {
 .menu-standby {
     position: relative;
     top: -100px;
-    background-color: purple;
     transform: translateY(-1000%); 
 }
 
@@ -132,13 +166,14 @@ h1, h2, h3, h4, h5 {
     animation-fill-mode: forwards;
 }
 
+
 #layout-container {
     margin-top: 15%;
-    background-color: yellow;
+    background-color: springgreen;
 }
 
-div#form-log {
-    background-color: rgba(255, 165, 2, 0.9);
+div#form-log, div#form, div.comment-form {
+    background-color: rgba(254, 255, 0, 0.9);
     height: 100%;
     width: 100%;
     position: absolute;
@@ -147,15 +182,16 @@ div#form-log {
     z-index: 10;
     display: none;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
 
 .modal-form {
     position: relative;
-    width: 50%;
-    background-color: aqua;
+    width: 80%;
+    background-color: white; 
     padding: 30px;
-    padding-top: 15px; 
+    padding-top: 15px;
+    /*transform: skew(-2deg);*/; 
 }
 
 .modal-form h2 {
@@ -189,13 +225,18 @@ div#form-log {
     border: none;
     box-shadow: none;
     cursor: pointer;
-
+    border: 1px solid white; 
 }
 
 .modal-form input[type=submit]:hover {
     background-color: white;
     color: springgreen;
-    /*border: 1px solid black;*/
+    border: 1px solid springgreen;
+}
+
+.modal-form textarea {
+    margin: 10px 0;
+    height: 200px;
 }
 
 .p-link {
@@ -226,4 +267,14 @@ div#form-log {
     color: red;
     background-color: white;
     border: 1px solid red;
+} 
+
+/*@media and screen (min-width: ) and (max-widt) {
+    make it responsive!
+}*/
+
+@media only screen and (min-width: 768px) {
+    .modal-form {
+        width: 50%;
+    }
 }

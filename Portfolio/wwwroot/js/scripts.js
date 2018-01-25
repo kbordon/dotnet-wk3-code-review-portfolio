@@ -40,17 +40,19 @@
 
     // exit modal
     $('.exit').click(function(){
+        alert("exit clicked!");
         if(!$('#form-log').length){
             $('.modal-form').last().css('display', 'none');
             $('.modal-form').first().css('display', 'none');
-            alert(":3")
+            alert(":3");
         } else {
             $('#form-log').css("display", "none");
         }
     });
 
     // displays form to add post
-    $('#create').click(function(){
+    $('#create').click(function(){        
+        $('#form').css("display", "flex");
         $.ajax({
             type: 'GET',
             dataType: 'html',
@@ -63,6 +65,7 @@
 
     // displays form to edit post
     $('.edit').click(function(){
+        $('#form').css("display", "flex");
         var x = $(this).parent().find(".edit-id").text();
         $.ajax({
             type: 'GET',
@@ -77,6 +80,7 @@
 
     // displays form to delete post
     $('.delete').click(function(){
+        $('#form').css("display", "flex");
         var x = $(this).parent().find(".edit-id").text();
         $.ajax({
             type: 'GET',
@@ -98,6 +102,7 @@
             url: '/Comment/Create/' + x,
             success: function(result){
             $(y).siblings('.comment-form').html(result);
+            $(y).siblings('.comment-form').css("display", "flex");
             }
         });
     });

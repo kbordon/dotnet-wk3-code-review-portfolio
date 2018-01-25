@@ -16,4 +16,9 @@
             });
         };
     });
+
+     // exit modal
+    $('.exit').click(function(){
+        $(this).parents('div.comment-form').css("display", "none");
+    });
 });
