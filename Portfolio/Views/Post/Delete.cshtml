@@ -1,9 +1,13 @@
 ﻿@model Portfolio.Models.Post
+<script src="~/js/modal.js"></script>
 
-<h2>Delete</h2>
-<em>@Model.Title</em>
-<p>Are you sure you want to delete this post?</p>
-@using (Html.BeginForm())
-{
-    <input type="submit" value="Delete"/>
-}
+<div class="modal-form">
+    <div class="exit">✕</div>
+    <h2>Delete</h2>
+    <em>@Model.Title</em>
+    <p>Are you sure you want to delete this post?</p>
+    @using (Html.BeginForm())
+    {
+        <input type="submit" value="Delete"/>
+    }
+</div>

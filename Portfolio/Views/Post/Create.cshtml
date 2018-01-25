@@ -1,8 +1,9 @@
 ﻿@model Portfolio.Models.Post
+<script src="~/js/modal.js"></script>
 
 <div class="modal-form">
     <div class="exit">✕</div>
-    <h2>new post!</h2>
+    <h2>new post!</h2> 
     @using (Html.BeginForm())  
     {
         @Html.LabelFor(model => model.Title)

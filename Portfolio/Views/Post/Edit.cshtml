@@ -1,15 +1,17 @@
 ﻿@model Portfolio.Models.Post
+<script src="~/js/modal.js"></script>
+<div class="modal-form">
+    <div class="exit">✕</div>
+    <h2><em>@Model.Title</em></h2>
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(m => m.PostId)
 
-<p id="cancel">x</p>
+        @Html.EditorFor(m => m.Title)
 
-@using (Html.BeginForm())
-{
-    @Html.HiddenFor(m => m.PostId)
+        @Html.EditorFor(m => m.Date, new { @class="datepicker"})
 
-    @Html.EditorFor(m => m.Title)
-
-    @Html.EditorFor(m => m.Date)
-
-    @Html.EditorFor(m => m.Content)
-    <input type="submit" value="Save Changes"/> 
-}
+        @Html.TextAreaFor(m => m.Content)
+        <input type="submit" value="Save Changes"/> 
+    }
+</div>

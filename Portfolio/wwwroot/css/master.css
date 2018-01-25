@@ -16,14 +16,19 @@ body {
     overflow: auto;
     font-family: 'Lato', sans-serif;
      
-}
+} 
 
 h1, h2, h3, h4, h5 {
     font-family: 'Racing Sans One', cursive;
 }
+#posts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 #posts {
-    margin: 0 10%;
+    margin: 0 10%; 
 }
 
 .post {
@@ -107,13 +112,13 @@ p.post-body {
     padding: 5%;
     height: 20%;
     align-items: center;
-    z-index: 99;
+    z-index: 1;
 
 }
 
 #header a {
     font-family: 'Racing Sans One', cursive;
-    font-size: 300%;
+    font-size: 190%;
     text-decoration: none;
     color: white;
     text-shadow: -2px 2px 0 black
@@ -167,7 +172,7 @@ p.post-body {
 
 
 #layout-container {
-    margin-top: 15%;
+    margin-top: 30%;
     background-color: springgreen;
 }
 
@@ -274,6 +279,15 @@ div#form-log, div#form, div.comment-form {
     make it responsive!
 }*/
 
+
+div#log-in, div#log-in-display {
+    position: relative;
+    bottom: 20px;
+    z-index: 2;
+    display: flex;
+    justify-content: space-evenly        
+}
+
 @media only screen and (min-width: 768px) {
     .modal-form {
         width: 50%;
@@ -284,5 +298,17 @@ div#form-log, div#form, div.comment-form {
     }
     p.post-body {
         margin: 5% 0;
+    }
+
+    #posts {
+        margin: 0 15%;
+    }
+
+    #layout-container {
+        margin-top: 20%;
+    }
+
+    #header a {
+        font-size: 300%;
     }
 }

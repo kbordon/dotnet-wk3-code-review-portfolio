@@ -7,63 +7,77 @@
 
 @using System.Security.Claims
 
-@if (User.Identity.IsAuthenticated)
-{
-    @User.Identity.Name
-    using (Html.BeginForm("LogOut", "Account"))
-    {
-        <input type="submit" value="Log Out"/> 
-    }  
-    if(User.IsInRole("ADMIN"))
-    {
-        <p id="create">Add Post</p>
-    }
-}
-else
-{
-    <p id="log-in">Log In</p> 
-}
+
 <div id="form-log"></div> 
 <div id="form"></div>
 
-<div id="posts">
-    @if (Model.Any())  
-    {
-    foreach (var post in Model.OrderByDescending(p => p.Date))
+<div id="posts-container">
+    <div id="log-in-display">
+        @if (User.Identity.IsAuthenticated)
         {
-            <div class="post">
-                <p class="edit-id" hidden>@post.PostId</p>      
-                <h1 class="post-title">@Html.DisplayFor(model => post.Title)</h1>
-                <p class="post-date">@post.Date.ToString("MMM dd, yyyy @ h:mm t")</p>
-                <p class="post-body">@Html.DisplayFor(model => post.Content)</p>
-            
-                @if(User.Identity.IsAuthenticated && User.IsInRole("ADMIN"))
-                {
-                    <span class="edit">Edit</span>
-                    <span class="delete">Delete</span>
-                }
-                @Html.ActionLink("permalink", "Entry", new { id = @post.PostId})
-                <span class="comment-add">Add a Comment</span>
-                <div class="comment-form"></div> 
-                @if(post.Comments.Any())
-                {
-                    <p class="toggle-comment"><span class="see-comment">Comments (@post.Comments.Count)</span>
-                    <span class="hide-comment">Hide Comments</span></p>
-                    <div class="comments">
-                    @foreach ( var comment in @post.Comments) 
+            @User.Identity.Name
+            using (Html.BeginForm("LogOut", "Account"))
+            {
+                <input type="submit" value="Log Out"/> 
+            }  
+            if(User.IsInRole("ADMIN"))
+            {
+                <p id="create">Add Post</p>
+            }
+        }
+        else
+        {
+            <div id="log-in">Log In</div> 
+        }
+    </div> 
+
+
+    <div id="posts">
+        @if (Model.Any())  
+        {
+        foreach (var post in Model.OrderByDescending(p => p.Date))
+            {
+                <div class="post">
+                    <p class="edit-id" hidden>@post.PostId</p>      
+                    <h1 class="post-title">@Html.DisplayFor(model => post.Title)</h1>
+                    <p class="post-date">@post.Date.ToString("MMM dd, yyyy @ h:mm t")</p>
+                    <p class="post-body">@Html.DisplayFor(model => post.Content)</p>
+                
+                    @if(User.Identity.IsAuthenticated && User.IsInRole("ADMIN"))
                     {
-                        <h3>@comment.Author</h3>
-                        <p>@comment.Date.ToString("MMM dd, yyyy @ h:mm t")</p>
-                        <p>@comment.Content</p> 
+                        <span class="edit">Edit</span>
+                        <span class="delete">Delete</span>
                     }
-                    </div>
-                }
-            </div> 
-        } 
-    }
-    else
-    {
-        <p><em>No posts yet.</em></p>
-    }
-</div> 
-  
+                    @Html.ActionLink("permalink", "Entry", new { id = @post.PostId})
+                    <span class="comment-add">Add a Comment</span>
+                    <div class="comment-form"></div> 
+                    @if(post.Comments.Any())
+                    {
+                        <p class="toggle-comment"><span class="see-comment">Comments (@post.Comments.Count)</span>
+                        <span class="hide-comment">Hide Comments</span></p>
+                        <div class="comments">
+                        @foreach ( var comment in @post.Comments) 
+                        {
+                            if (@comment.Author == null)
+                            {
+                                <h3>anonymous</h3>
+                            }
+                            else
+                            {
+                                <h3>@comment.Author</h3>
+                            }
+                            <p>@comment.Date.ToString("MMM dd, yyyy @ h:mm t")</p>
+                            <p>@comment.Content</p> 
+                        }
+                        </div>
+                    }
+                </div> 
+            } 
+        }
+        else
+        {
+            <p><em>No posts yet.</em></p>
+        }
+    </div> 
+      
+</div>
