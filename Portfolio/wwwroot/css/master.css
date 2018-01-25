@@ -42,7 +42,6 @@ h1.post-title {
     position: relative;
     bottom: 27px;
     text-align: right;
-
 }
 
 p.post-date {
@@ -210,7 +209,9 @@ div#form-log, div#form, div.comment-form {
 .modal-form input{
     margin: 10px 0;
     font-size: 20px;
-    border: none
+    border: 1px;
+    border: 1px solid #999;
+    /*box-shadow: -1px 1px black;*/
 }
 
 .modal-form input[type=text], input[type=password] {
@@ -276,5 +277,12 @@ div#form-log, div#form, div.comment-form {
 @media only screen and (min-width: 768px) {
     .modal-form {
         width: 50%;
+    }
+    h1.post-title {
+        bottom: 35px;
+        font-size: 40px;
+    }
+    p.post-body {
+        margin: 5% 0;
     }
 }
