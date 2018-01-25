@@ -62,13 +62,8 @@ p.post-body {
 
 }
 
-.comments {
-    display: none;
-    background-color: aquamarine;
-}
-
 .hide-comment {
-    display: none;
+    display: none; 
 }
 
 
@@ -293,22 +288,42 @@ div#create {
     width: 15%
 }
 
-div.delete, div.edit, div.comment-add, div.see-comment, div.link {
-    width: 5%
-}
-
 .icon {
     max-height: 100%;
     max-width: 100%;
 }
 
-.icon:hover, .see-comment:hover {
-    background-color: springgreen;
+.icon:hover, .see-comment:hover, .hide-comment:hover {
+    background-color: magenta;
     cursor: pointer;
 }
 
 div#create .icon:hover {
     background-color: white;
+}
+
+.post-bottom {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: flex-start;
+}
+
+.comments {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 90%;
+    z-index: 2;
+    padding: 10px;
+    border: 6px solid white;
+    display: none;
+    background-color: yellow
+    /*background-color: aquamarine;*/
+}
+
+.delete, .edit, .comment-add, .see-comment, .link, .toggle-comment {
+    width: 5%
 }
 
 @media only screen and (min-width: 768px) {
@@ -333,5 +348,29 @@ div#create .icon:hover {
 
     #header a {
         font-size: 300%;
+    }
+
+    .comments {
+        padding: 35px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    div.delete, div.edit, div.comment-add, div.see-comment, div.link, div.toggle-comment {
+        width: 3%
+    }
+
+    .comments {
+        padding: 50px; 
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    div.delete, div.edit, div.comment-add, div.see-comment, div.link, div.toggle-comment {
+        width: 2.5%
+    }
+
+    .comments {
+        padding: 50px;
     }
 }

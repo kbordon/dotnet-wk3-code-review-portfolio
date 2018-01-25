@@ -66,7 +66,7 @@
     // displays form to edit post
     $('.edit').click(function(){
         $('#form').css("display", "flex");
-        var x = $(this).parent().find(".edit-id").text();
+        var x = $(this).parent().parent().find(".edit-id").text();  
         $.ajax({
             type: 'GET',
             dataType: 'html',
@@ -94,17 +94,27 @@
 
     // displays form to add a comment
     $('.comment-add').click(function(){
-        var x = $(this).parent().find(".edit-id").text();
+        var x = $(this).parent().parent().find(".edit-id").text();
         var y = ".edit-id:contains('" + x + "')";
-        $.ajax({
-            type: 'GET',
-            dataType: 'html',
-            url: '/Comment/Create/' + x,
-            success: function(result){
-            $(y).siblings('.comment-form').html(result);
-            $(y).siblings('.comment-form').css("display", "flex");
-            }
-        });
+        if ($('.post-bottom').length)
+        {
+           $.ajax({
+                type: 'GET',
+                dataType: 'html',
+                url: '/Comment/Create/' + x, 
+                success: function(result){
+                 $('#form').html(result);
+                 $('#form').css("display", "flex");
+                //$(y).siblings('.post-bottom').find('.comment-form').html(result);
+                //$(y).siblings('.post-bottom').find('.comment-form').css('display', 'flex'); 
+                }
+            }); 
+        }
+        else
+        {
+            $.ajax({                 type: 'GET',                 dataType: 'html',                 url: '/Comment/Create/' + x,                 success: function(result){                 $(y).siblings('.comment-form').html(result);                 $(y).siblings('.comment-form').css("display", "flex");                 }             });
+        }
+
     });
 
     // toggles visibility of each post's comment section

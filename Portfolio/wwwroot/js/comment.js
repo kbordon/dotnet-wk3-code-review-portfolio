@@ -19,6 +19,7 @@
 
      // exit modal
     $('.exit').click(function(){
+        alert('this is the correct thing.');
         $(this).parents('div.comment-form').css("display", "none");
     });
 });
