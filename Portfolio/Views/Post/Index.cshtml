@@ -7,23 +7,22 @@
 
 @using System.Security.Claims
 
-
 <div id="form-log"></div> 
 <div id="form"></div>
 
 <div id="posts-container">
     <div id="log-in-display">
-        @if (User.Identity.IsAuthenticated)
+        @if (User.Identity.IsAuthenticated) 
         {
+            if(User.IsInRole("ADMIN"))
+            {
+                <div id="create"><img class="icon" src="~/img/create.png"/></div>
+            } 
             @User.Identity.Name
             using (Html.BeginForm("LogOut", "Account"))
             {
                 <input type="submit" value="Log Out"/> 
-            }  
-            if(User.IsInRole("ADMIN"))
-            {
-                <p id="create">Add Post</p>
-            }
+            } 
         }
         else
         {
@@ -45,16 +44,18 @@
                 
                     @if(User.Identity.IsAuthenticated && User.IsInRole("ADMIN"))
                     {
-                        <span class="edit">Edit</span>
-                        <span class="delete">Delete</span>
+                        <div class="edit"><img class="icon" src="~/img/edit.png" title="edit"/></div>
+                        <div class="delete"><img class="icon" src="~/img/bin.png" title="delete" /></div>  
                     }
-                    @Html.ActionLink("permalink", "Entry", new { id = @post.PostId})
-                    <span class="comment-add">Add a Comment</span>
+                <div class="link"><a href='@Url.Action("Entry", new { id = @post.PostId})'><img class="icon" src="~/img/link.png" title="permalink" onclick="location.href"/></a></div> 
+                    <div class="comment-add"><img class="icon" src="~/img/comment.png" title="Comments"/></div>
                     <div class="comment-form"></div> 
                     @if(post.Comments.Any())
                     {
-                        <p class="toggle-comment"><span class="see-comment">Comments (@post.Comments.Count)</span>
-                        <span class="hide-comment">Hide Comments</span></p>
+                        <div class="toggle-comment">
+                            <div class="see-comment">(@post.Comments.Count)</div>
+                            <span class="hide-comment">Hide Comments</span>
+                        </div>
                         <div class="comments">
                         @foreach ( var comment in @post.Comments) 
                         {

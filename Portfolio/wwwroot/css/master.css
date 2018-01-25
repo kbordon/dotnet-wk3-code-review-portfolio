@@ -241,8 +241,9 @@ div#form-log, div#form, div.comment-form {
 }
 
 .modal-form textarea {
+    border: 1px solid #999;
     margin: 10px 0;
-    height: 200px;
+    height: 200px
 }
 
 .p-link {
@@ -286,6 +287,28 @@ div#log-in, div#log-in-display {
     z-index: 2;
     display: flex;
     justify-content: space-evenly        
+}
+
+div#create {
+    width: 15%
+}
+
+div.delete, div.edit, div.comment-add, div.see-comment, div.link {
+    width: 5%
+}
+
+.icon {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.icon:hover, .see-comment:hover {
+    background-color: springgreen;
+    cursor: pointer;
+}
+
+div#create .icon:hover {
+    background-color: white;
 }
 
 @media only screen and (min-width: 768px) {
