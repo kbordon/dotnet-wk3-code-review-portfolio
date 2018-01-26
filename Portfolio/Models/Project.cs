@@ -56,6 +56,11 @@ namespace Portfolio.Models
 
             return tcs.Task;
         }
+
+        public static string DisplayDate(string date){
+            string displayStr = DateTime.Parse(date).ToString("MMM d, yyyy (h:mm t)");
+            return displayStr;
+        }
     }
 
 
