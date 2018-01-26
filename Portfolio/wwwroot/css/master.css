@@ -325,7 +325,7 @@ div#create .icon, #log-in-display form img{
 
 .icon, .see-comment {
     max-height: 100%;
-    max-width: 100%;
+    max-width: 100%; 
 }
 
 .see-comment{
@@ -343,16 +343,15 @@ div#create .icon, #log-in-display form img{
 
 .post-bottom {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     position: relative;
-    align-items: flex-start;
 }
 
 .comments {
     position: absolute;
     left: 0;
     top: 0;
-    width: 90%;
+    width: 85%;
     z-index: 2; 
     padding: 10px;
     border: 6px solid white;
@@ -361,17 +360,25 @@ div#create .icon, #log-in-display form img{
     /*background-color: aquamarine;*/
 }
 
-.delete, .edit, .comment-add, .link, .toggle-comment {
-    width: 5%
+.entry-comments form {
+    width: 15px;
+
 }
+
+.delete, .edit, .comment-add, .link, .toggle-comment {
+    width: 15px;
+} 
 
 .individual-c {
     margin: 5px 0;
 }
 
 .entry-container {
-    margin: 0 20px;
-    padding: 0 10px;
+    padding: 0 10px;
+    background-color: white;
+    bottom: 0;
+    position: absolute;
+    top: 17%;
 }
 .entry-container h1 {
     text-align: right;
@@ -389,6 +396,10 @@ div#create .icon, #log-in-display form img{
     color: black;
     background-color: white;
 
+}
+
+.entry-container .post-bottom {
+    padding: 30px;
 }
 
 #log-in-display button {
