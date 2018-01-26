@@ -30,7 +30,8 @@ h1, h2, h3, h4, h5 {
 }
 
 #posts {
-    margin: 0 10%; 
+    /*margin: 0 10%;*/
+    width: 70%;
 }
 
 .post {
@@ -39,9 +40,7 @@ h1, h2, h3, h4, h5 {
     background-color: white;
     box-shadow: -5px 4px black;
     margin-bottom: 10%;
-    /*-ms-transform: skewX(2deg);
-    -webkit-transform: skewX(2deg);
-    transform: skewX(2deg)*/;
+
 }
 
 /*modify for non-mobile*/ 
@@ -195,8 +194,7 @@ div#form-log, div#form, div.comment-form {
     width: 80%;
     background-color: white; 
     padding: 30px;
-    padding-top: 15px;
-    /*transform: skew(-2deg);*/; 
+    padding-top: 15px; 
 }
 
 .modal-form h2 {
@@ -467,7 +465,7 @@ p.login-fail {
     }
 
     #posts {
-        margin: 0 15%;
+        margin: 0 15%; 
     }
 
     #layout-container {
