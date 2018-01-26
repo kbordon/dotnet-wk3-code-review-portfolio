@@ -21,24 +21,40 @@ namespace Portfolio.Models
         public static List<Project> GetStarred()
         {
             var client = new RestClient("https://api.github.com");
-            var request = new RestRequest("user/starred", Method.GET);
+            // For personal use only.
+            // var request = new RestRequest("user/starred", Method.GET);
+
+            // To get a general listing of starred projects for the user specified in the UserAgent property.
+            var request = new RestRequest("users/" + EnvironmentVariables.UserAgent + "/starred", Method.GET);
             request.AddHeader("Accept", "application/vnd.github.v3.full+json");
             request.AddHeader("User-Agent", EnvironmentVariables.UserAgent);
 
             // If using token, uncomment this and reference variable from enviroment key.
-            request.AddHeader("Authorization", EnvironmentVariables.Token);
+            //request.AddHeader("Authorization", EnvironmentVariables.Token);
 
-            // If using basic password, and username authentication, comment out line 30, and use line below.
+            // If using basic password, and username authentication, make sure the line above is commented out, and use line below.
             client.Authenticator = new HttpBasicAuthenticator(EnvironmentVariables.UserAgent, EnvironmentVariables.Password);
+
             var response = new RestResponse();
+
             Task.Run(async () =>
             {
                 response = await GetResponseContentAsync(client, request) as RestResponse;
             }).Wait();
-            JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(response.Content);
-            var projectList = JsonConvert.DeserializeObject<List<Project>>(jsonResponse[0].ToString());
 
+            JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(response.Content);
+            List<Project> projectList = JsonConvert.DeserializeObject<List<Project>>(jsonResponse.ToString());
             return projectList;
+        }
+
+        public static Task<IRestResponse> GetResponseContentAsync(RestClient theClient, RestRequest theRequest)
+        {
+            var tcs = new TaskCompletionSource<IRestResponse>();
+            theClient.ExecuteAsync(theRequest, response => {
+                tcs.SetResult(response);
+            });
+
+            return tcs.Task;
         }
     }
 

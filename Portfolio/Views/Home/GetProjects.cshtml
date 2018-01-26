@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Portfolio.Models.Project>
+
+@foreach (var project in Model)
+{
+    <h1><a target="_blank" href=@project.Html_Url> @project.Name</a></h1>
+    <h2>@project.Description</h2>
+    <p>Written in: @project.Language</p>
+    <p>Created: @project.Created_At</p>
+    <p>Last Push: @project.Pushed_At</p>
+
+}

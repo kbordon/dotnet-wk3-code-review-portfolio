@@ -452,6 +452,16 @@ p.login-fail {
     justify-content: center;
 }
 
+
+#home-projects {
+    /*display: none;*/ 
+}
+
+
+
+
+/*Media queries start here_____________________________________*/
+
 @media only screen and (min-width: 768px) {
     .modal-form {
         width: 50%;

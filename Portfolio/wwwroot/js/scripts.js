@@ -7,10 +7,28 @@
 
     }
 
-    // test this submit.
-    $('#test').click
 
-    // on log-in failure page.
+    // Get starred projects if not already there.
+    $('#menu-works').click(function(){
+        if(($('#home-projects').css('height') === '0px' || $('#home-projects').css('width') === '0px') && $('#home-projects').length)
+        {
+            alert("this hasn't been opened yet.");
+            $.ajax({
+                type: 'GET',
+                dataType: 'html',
+                url: '/Home/GetProjects',
+                success: function(result){
+                    $('#home-projects').html(result);
+                }
+            });
+        }
+        else
+        {
+            alert("this is the height: " + $('#home-projects').css('height') + " this is the width : " + $('#home-projects').css('height')); 
+        }
+    });
+
+    // on log-in failure page, to show register modal.
     $('#register').click(function(){
         if(!$('#form-log').length){
             $.ajax({
@@ -26,7 +44,7 @@
      });
 
 
-    // displays form to log in
+    // displays form to log in on the blog page.
     $('#log-in').click(function(){
         $('#form-log').css("display", "flex");
         $.ajax({
@@ -39,7 +57,7 @@
         });
     });
 
-    // exit modal
+    // exit modal. if on the failed log-in page. Other wise, on blog page.
     $('.exit').click(function(){
         if(!$('#form-log').length){
             $('.modal-form').last().css('display', 'none');
