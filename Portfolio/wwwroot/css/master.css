@@ -430,6 +430,30 @@ div#create .icon, #log-in-display form img{
 .comment-top {
     display: flex;
 }
+
+#fail {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 5%;
+}
+
+#fail h1{
+    margin: 10px;
+}
+
+p.login-fail { 
+   margin: 30px;
+} 
+
+#register-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 @media only screen and (min-width: 768px) {
     .modal-form {
         width: 50%;
@@ -478,6 +502,7 @@ div#create .icon, #log-in-display form img{
     #layout-container {
         margin-top: 15%
     }
+
 }
 
 @media only screen and (min-width: 1440px) {
@@ -492,5 +517,8 @@ div#create .icon, #log-in-display form img{
     h1.post-title {
         bottom: 60px;
         font-size: 55px
+    }
+    p.post-date {
+        font-size: large
     }
 }

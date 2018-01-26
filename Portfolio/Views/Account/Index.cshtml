@@ -3,26 +3,26 @@
     ViewData["Title"] = "Portfolio :: Blog"; 
     Layout = "~/Views/Shared/_Layout.cshtml"; 
 }
-
+<div id="fail">
 @using System.Security.Claims
-<h1>Log in Failed 😰</h1>
-<h2>Please try again.</h2>
-Either that account doesn't exist or password was incorrect.
- 
-<div class="modal-form">  
-    <h2>Log In</h2>
-    @using (Html.BeginForm())
-    {
-        <p>Username</p>
-        @Html.TextBoxFor(m => m.UserName, new {@required="required"})
-        <br>
-        <p>Password</p>
-        @Html.PasswordFor(m => m.Password, new {@required="required"})
-        <input type="submit" value="Log In"/>
-    }
+    <h1>Log in Failed 😰</h1>
+    <h2>Please try again.</h2>
+    <p class="login-fail">Either that account doesn't exist or password was incorrect.</p> 
      
-      
-    <p id="register" class="p-link">Don't have an account? Register here.</p>
-</div>
-
-<div id="register-form"></div>  
+    <div class="modal-form">  
+        <h2>Log In</h2>
+        @using (Html.BeginForm())
+        {
+            <p>Username</p>
+            @Html.TextBoxFor(m => m.UserName, new {@required="required"})
+            <br>
+            <p>Password</p>
+            @Html.PasswordFor(m => m.Password, new {@required="required"})
+            <input type="submit" value="Log In"/>
+        }
+         
+          
+        <p id="register" class="p-link">Don't have an account? Register here.</p>
+    </div>
+<div id="register-form"></div>
+</div> 

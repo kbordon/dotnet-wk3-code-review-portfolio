@@ -18,7 +18,7 @@
                 dataType: 'html',
                 url: '/Account/Register',
                 success: function(result){
-                    $('#register-form').html(result);
+                    $('#register-form').html(result); 
                     $('.modal-form').first().css('display', 'none');
                 }
             });
