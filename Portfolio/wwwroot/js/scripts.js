@@ -7,6 +7,9 @@
 
     }
 
+    // test this submit.
+    $('#test').click
+
     // on log-in failure page.
     $('#register').click(function(){
         if(!$('#form-log').length){

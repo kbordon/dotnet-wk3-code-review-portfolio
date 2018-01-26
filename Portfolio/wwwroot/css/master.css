@@ -323,9 +323,13 @@ div#create .icon, #log-in-display form img{
     max-width: 15px;
 }
 
-.icon {
+.icon, .see-comment {
     max-height: 100%;
     max-width: 100%;
+}
+
+.see-comment{
+    text-align: center;
 }
 
 .icon:hover, .toggle-comment:hover {
@@ -357,7 +361,7 @@ div#create .icon, #log-in-display form img{
     /*background-color: aquamarine;*/
 }
 
-.delete, .edit, .comment-add, .see-comment, .link, .toggle-comment {
+.delete, .edit, .comment-add, .link, .toggle-comment {
     width: 5%
 }
 
@@ -426,7 +430,7 @@ div#create .icon, #log-in-display form img{
 }
 
 @media only screen and (min-width: 1024px) {
-    div.delete, div.edit, div.comment-add, div.see-comment, div.link, div.toggle-comment {
+    div.delete, div.edit, div.comment-add, div.link, div.toggle-comment {
         width: 3%
     }
 
@@ -439,7 +443,7 @@ div#create .icon, #log-in-display form img{
 }
 
 @media only screen and (min-width: 1440px) {
-    div.delete, div.edit, div.comment-add, div.see-comment, div.link, div.toggle-comment {
+    div.delete, div.edit, div.comment-add, div.link, div.toggle-comment {
         width: 2.5%
     }
 
