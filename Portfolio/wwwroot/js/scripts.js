@@ -4,14 +4,12 @@
 
     if (window.location.href === "http://localhost:5000/Account/Login" && document.referrer === "http://localhost:5000/Post")
     {
-        alert("hi!");
 
     }
 
     // on log-in failure page.
     $('#register').click(function(){
         if(!$('#form-log').length){
-            alert("hi");
             $.ajax({
                 type: 'GET',
                 dataType: 'html',
@@ -40,11 +38,9 @@
 
     // exit modal
     $('.exit').click(function(){
-        alert("exit clicked!");
         if(!$('#form-log').length){
             $('.modal-form').last().css('display', 'none');
             $('.modal-form').first().css('display', 'none');
-            alert(":3");
         } else {
             $('#form-log').css("display", "none");
         }
@@ -75,14 +71,12 @@
             $('#form').html(result);
             }
         });
-            alert(x);   
     });
 
     // displays form to delete post
     $('.delete').click(function(){
         $('#form').css("display", "flex");
         var x = $(this).parent().parent().find(".edit-id").text();
-        alert(x);
         $.ajax({
             type: 'GET',
             dataType: 'html',

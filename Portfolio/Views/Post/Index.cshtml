@@ -26,7 +26,7 @@
         }
         else
         {
-            <div id="log-in">Log In</div> 
+            <div id="log-in">log in</div> 
         }
     </div> 
 
@@ -43,36 +43,37 @@
                     <p class="post-body">@Html.DisplayFor(model => post.Content)</p>
 
             
-                    <div class="post-bottom">           
+                    <div class="post-bottom">             
                         @if(User.Identity.IsAuthenticated && User.IsInRole("ADMIN"))
                         {
                             <div class="edit"><img class="icon" src="~/img/edit.png" title="edit"/></div>
-                            <div class="delete"><img class="icon" src="~/img/bin.png" title="delete" /></div>  
+                            <div class="delete"><img class="icon" src="~/img/bin.png" title="delete"/></div>  
                         }
                         <div class="link"><a href='@Url.Action("Entry", new { id = @post.PostId})'><img class="icon" src="~/img/link.png" title="permalink" onclick="location.href"/></a></div> 
                         <div class="comment-add"><img class="icon" src="~/img/comment.png" title="Comments"/></div>
-                        <div class="comment-form"></div>
                             @if(post.Comments.Any())
                             {
                                 <div class="toggle-comment">
-                                    <div class="see-comment">(@post.Comments.Count)</div> 
+                                    <div class="see-comment"><p>(@post.Comments.Count)</p></div> 
                                     <div class="hide-comment"><img class="icon" src="~/img/hide.png" title="hide comments"/></div> 
                                 </div>
                                 <div class="comments">
                                 @foreach ( var comment in @post.Comments) 
                                 {
-                                    if (@comment.Author == null)
-                                    {
-                                        <h3>anonymous</h3>
-                                    }
-                                    else
-                                    {
-                                        <h3>@comment.Author</h3>
-                                    }
-                                    <p>@comment.Date.ToString("MMM dd, yyyy @ h:mm t")</p>
-                                    <p>@comment.Content</p> 
-                                }
-                                </div>
+                                  <div class="individual-c">
+                                        @if (@comment.Author == null)
+                                        {
+                                            <h3>anonymous</h3>
+                                        }
+                                        else
+                                        {
+                                            <h3>@comment.Author</h3>
+                                        }
+                                        <p>@comment.Date.ToString("MMM dd, yyyy @ h:mm t")</p>
+                                        <p>@comment.Content</p>
+                                  </div>
+                                } 
+                              </div>
                             }
                      </div>
                 </div> 
