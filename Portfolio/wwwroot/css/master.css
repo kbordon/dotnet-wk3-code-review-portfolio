@@ -347,6 +347,28 @@ div#create .icon:hover {
     margin: 5px 0;
 }
 
+.entry-container {
+    margin: 0 20px;
+    padding: 0 10px;
+}
+.entry-container h1 {
+    text-align: right;
+}
+.entry-date {
+    text-align: right;
+    font-size: small;
+    letter-spacing: 2px;
+    color: magenta;
+    margin: 10px;
+}
+
+.entry-body {
+    padding: 10px 10px;
+    color: black;
+    background-color: white;
+
+}
+
 @media only screen and (min-width: 768px) {
     .modal-form {
         width: 50%;
