@@ -30,7 +30,6 @@ h1, h2, h3, h4, h5 {
 }
 
 #posts {
-    /*margin: 0 10%;*/
     width: 70%;
 }
 
@@ -67,36 +66,6 @@ p.post-body {
 .hide-comment {
     display: none; 
 }
-
-
-/*#menu-blog {
-    transform: translateX(0);
-}
-#menu-blog:hover {
-    background-color: bisque;
-}
-
-@keyframes blog {
-    from { background-color: bisque;
-           transform: translateX(0);
-    }
-    to { background-color: lawngreen;
-         transform: translateX(-30px);
-    }
-}
-
-.menu-blog-active {
-    animation-name: blog;
-    animation-duration: 2.5s;
-    animation-fill-mode: forwards;
-}
-
-.menu-blog-standby {
-    background-color: lawngreen;
-    position: relative;
-    left: -30px;
-}*/
-
 
 #header
 {
@@ -453,8 +422,21 @@ p.login-fail {
 }
 
 
+
+#work {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
 #home-projects {
-    /*display: none;*/ 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 31px;
+    background: black;
+    color: white;
+    text-align: right;
 }
 
 
@@ -475,7 +457,7 @@ p.login-fail {
     }
 
     #posts {
-        margin: 0 15%; 
+        margin: 70%; 
     }
 
     #layout-container {

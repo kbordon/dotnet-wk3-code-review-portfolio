@@ -8,7 +8,7 @@
     }
 
 
-    // Get starred projects if not already there.
+    // Get starred projects if the div isn't already displayed.
     $('#menu-works').click(function(){
         if(($('#home-projects').css('height') === '0px' || $('#home-projects').css('width') === '0px') && $('#home-projects').length)
         {
@@ -24,7 +24,8 @@
         }
         else
         {
-            alert("this is the height: " + $('#home-projects').css('height') + " this is the width : " + $('#home-projects').css('height')); 
+            // Testing conditional.
+            //alert("this is the height: " + $('#home-projects').css('height') + " this is the width : " + $('#home-projects').css('height')); 
         }
     });
 

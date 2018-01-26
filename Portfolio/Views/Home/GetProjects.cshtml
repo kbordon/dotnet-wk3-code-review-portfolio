@@ -3,10 +3,12 @@
 
 @foreach (var project in Model)
 {
-    <h1><a target="_blank" href=@project.Html_Url> @project.Name</a></h1>
-    <h2>@project.Description</h2>
-    <p>Written in: @project.Language</p>
-    <p>Created: @Project.DisplayDate(@project.Created_At)</p>
-    <p>Last Push: @Project.DisplayDate(@project.Pushed_At)</p>
+    <div class="project">
+        <h1><a target="_blank" href=@project.Html_Url> @project.Name</a></h1>
+        <h2>@project.Description</h2>
+        <p>Written in: @project.Language</p>
+        <p>Created: @Project.DisplayDate(@project.Created_At)</p>
+        <p>Last Push: @Project.DisplayDate(@project.Pushed_At)</p>
+    </div>
      
 }  
