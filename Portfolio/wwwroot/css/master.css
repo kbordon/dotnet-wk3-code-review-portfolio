@@ -350,8 +350,8 @@ div#create .icon, #log-in-display form img{
 .comments {
     position: absolute;
     left: 0;
-    top: 0;
-    width: 85%;
+    top: -5px;
+    width: 80%;
     z-index: 2; 
     padding: 10px;
     border: 6px solid white;
