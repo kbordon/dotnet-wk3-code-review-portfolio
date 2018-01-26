@@ -1,0 +1,17 @@
+﻿<div id="log-in-display">
+    @if (User.Identity.IsAuthenticated) 
+    {
+        <h1>@User.Identity.Name</h1>
+        if(User.IsInRole("ADMIN"))
+        {
+            <div id="create"><img class="icon" src="~/img/create.png"/></div>
+        } 
+        <form method="post" action="@Url.Action("LogOut", "Account")">
+            <button type="submit"><img class="icon" src="~/img/logout.png" title="logout"/></button>
+        </form>
+    }
+    else
+    {
+        <div id="log-in"><p>log in</p></div> 
+    }
+</div>

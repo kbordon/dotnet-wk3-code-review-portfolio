@@ -4,14 +4,15 @@
     ViewData["Title"] = "Portfolio :: Blog :: " + @Model.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+ 
+@Html.Partial("LogDisplay")
+<div id="form-log"></div> 
 <div class="entry-container">
     <p class="edit-id" hidden>@Model.PostId</p>
     <h1>@Model.Title</h1>
     <p class="entry-date"><em>@Model.Date.ToString("MMM d, yyyy @ h:mm t")</em></p>  
     <p class="entry-body">@Model.Content</p>
     <div class="comment-add"><img class="icon" src="~/img/comment.png" title="Comments"/></div>
-    <span class="comment-add">Add a Comment</span>
     <div class="comment-form"></div>
     <div class="entry-comments">
                 @if (Model.Comments.Any())
