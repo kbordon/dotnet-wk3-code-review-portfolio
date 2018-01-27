@@ -10,8 +10,10 @@
 
     // Get starred projects if the div isn't already displayed.
     $('#menu-works').click(function(){
-        if(($('#home-projects').css('height') === '0px' || $('#home-projects').css('width') === '0px') && $('#home-projects').length)
+        if($('#home-projects').css('display') === 'none' && $('#home-projects').length)
         {
+            $('#home-projects').css('display', 'flex');
+            $('#work h1').css('color', 'white')
             alert("this hasn't been opened yet.");
             $.ajax({
                 type: 'GET',

@@ -78,7 +78,7 @@ p.post-body {
     padding: 5%;
     height: 20%;
     align-items: center;
-    z-index: 0;
+    z-index: 1;
 
 }
 
@@ -424,20 +424,42 @@ p.login-fail {
 
 
 #work {
+    padding-top: 35%;
     width: 100%;
     height: 100%;
     position: relative;
 }
 
+#home-projects a {
+    color: yellow;
+    text-decoration: yellow;
+    letter-spacing: 2px;
+}
+
+#home-projects a:hover {
+    color: magenta;
+}
+
+#home-projects h1, h2, h3, h4 {
+    font-family: Lato;
+}
 #home-projects {
     position: absolute;
     width: 100%;
-    height: 100%;
-    top: 31px;
-    background: black;
-    color: white;
+    height: 77%;
+    top: 23%;
+    background: rgba(0,255,127,0.40);
+    color: black;
     text-align: right;
+    display: none;
+    flex-direction: column;
+    padding-right: 10px
+    /*justify-content: space-evenly;*/
 }
+
+.project {
+    height: 25%;
+ }
 
 
 
@@ -457,7 +479,7 @@ p.login-fail {
     }
 
     #posts {
-        margin: 70%; 
+        width: 60%; 
     }
 
     #layout-container {
@@ -470,6 +492,19 @@ p.login-fail {
 
     .comments {
         padding: 35px;
+    }
+
+    .entry-container {
+        padding: 0 10%; 
+    }
+
+    #work {
+        padding-top: 25%;
+    }
+
+    #home-projects {
+        height: 73%;
+        top: 27%; 
     }
 }
 
@@ -493,6 +528,11 @@ p.login-fail {
         margin-top: 15%
     }
 
+    #home-projects {
+        height: 67%;
+        top: 33%
+    }
+
 }
 
 @media only screen and (min-width: 1440px) {
@@ -509,6 +549,14 @@ p.login-fail {
         font-size: 55px
     }
     p.post-date {
-        font-size: large
+        font-size: large;
+    }
+
+    #work {
+        padding-top: 17%;
+    }
+
+    #home-projects {
+        padding-right: 30px;
     }
 }
