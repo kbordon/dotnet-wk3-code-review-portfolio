@@ -55,6 +55,7 @@ namespace Portfolio.Controllers
         public async Task<IActionResult> CreateFromEntry(Comment newComment)
         {
             newComment.CommentId = 0;
+            newComment.Author = this.User.Identity.Name;
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (userId != null)
             {
@@ -63,7 +64,6 @@ namespace Portfolio.Controllers
             }
             _db.Comments.Add(newComment);
             _db.SaveChanges();  
-            Console.WriteLine("###################### "+ newComment.PostId + " ##########################");
             return RedirectToAction("Entry", "Post", new { id = newComment.PostId});
         }
 
