@@ -21,19 +21,16 @@ namespace Portfolio.Models
         public static List<Project> GetStarred()
         {
             var client = new RestClient("https://api.github.com");
-            // For personal use only.
-            // var request = new RestRequest("user/starred", Method.GET);
 
-            // To get a general listing of starred projects for the user specified in the UserAgent property.
             var request = new RestRequest("users/kbordon/starred", Method.GET);
             request.AddHeader("Accept", "application/vnd.github.v3.full+json");
             request.AddHeader("User-Agent", "");
 
-            // If using token, uncomment this and reference variable from enviroment key.
-            //request.AddHeader("Authorization", "token " + EnvironmentVariables.Token);
+            // For PASSWORD authentication:
+            // client.Authenticator = new HttpBasicAuthenticator(EnvironmentVariables.UserAgent, EnvironmentVariables.Key);
 
-            // PASSWORD use: make sure that request.AddHeader("User-Agent", EnvironmentVariables.UserAgent); above is commented out, and use line below.
-            client.Authenticator = new HttpBasicAuthenticator(EnvironmentVariables.UserAgent, EnvironmentVariables.Password);
+            // For TOKEN authentication: uncomment this, and reference variable from enviroment key.
+            //request.AddHeader("Authorization", "token " + EnvironmentVariables.Key);
 
             var response = new RestResponse();
 

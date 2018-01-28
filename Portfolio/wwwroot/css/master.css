@@ -22,6 +22,19 @@ h1, h2, h3, h4, h5 {
     font-family: 'Racing Sans One', cursive;
 }
 
+#footer {
+    background-color: black;
+    color: white;
+    padding: 2%;
+    font-size: small;
+}
+#footer a {
+    color: yellow;
+    text-decoration: none;
+}
+#footer a:hover {
+    color: magenta;
+}
 
 #posts-container {
     display: flex;
@@ -464,14 +477,14 @@ p.login-fail {
 #splash-row {
     width: 100%;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     padding-right: 5%;
     padding-left: 5%;
     justify-content: space-evenly;
 }
 
 .splash-item{
-    width: 30%;
+    width: 45%;
 }
 
 .splash-item img {
@@ -484,6 +497,12 @@ p.login-fail {
 /*Media queries start here_____________________________________*/
 
 @media only screen and (min-width: 768px) {
+    #splash-row {
+        flex-wrap: nowrap;
+    }
+    .spash-item {
+        width: 30%;
+    }
     .modal-form {
         width: 50%;
     }

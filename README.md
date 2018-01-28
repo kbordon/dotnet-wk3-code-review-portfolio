@@ -68,17 +68,17 @@ _This is an application that showcases my portfolio work. It includes a blog sec
   * Then go to the `Project.cs` file in the `Portfolio/Models` folder, and on line 30, change the second argument in the AddHeader method from an empty string to the following:
     * `request.AddHeader("User-Agent", EnvironmentVariables.UserAgent);`
 
-  * Remember should you make any commits, or push any code afterwards, when you clone it to a different destination, you will have to recreate this file.
-
-  * If you decide to use a personal token instead of a password, you will have to go to the `Project.cs` file in the `Portfolio/Models` folder.
-    * Make sure line 33 is not commented out.
+  * Then, depending on whether you are using a password or a token, make sure to uncomment one of the following lines:
+    * If using a password, uncomment line 30:
+      ```
+      client.Authenticator = new HttpBasicAuthenticator(EnvironmentVariables.UserAgent, EnvironmentVariables.Key);
+      ```  
+    * If using a token, uncomment line 33:
       ```
       request.AddHeader("Authorization", "token " + EnvironmentVariables.Key);
       ```
-    * Comment out or remove line 36.
-      ```
-      client.Authenticator = new HttpBasicAuthenticator(EnvironmentVariables.UserAgent, EnvironmentVariables.Key);
-      ```
+  * Remember should you make any commits, or push any code afterwards, when you clone it to a different destination, you will have to recreate this file.
+
 ***
 ***
 * In terminal, and making sure you're in the Portfolio project folder (where the `Portfolio.csproj` resides), enter the following:
