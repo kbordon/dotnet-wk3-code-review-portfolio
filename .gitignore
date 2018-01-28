@@ -40,4 +40,4 @@ Thumbs.db
 *.dotCover
 
 # env
-EnvironmentVariables.cs
+Portfolio/Models/EnvironmentVariables.cs
