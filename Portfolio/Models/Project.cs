@@ -30,7 +30,7 @@ namespace Portfolio.Models
             request.AddHeader("User-Agent", EnvironmentVariables.UserAgent);
 
             // If using token, uncomment this and reference variable from enviroment key.
-            //request.AddHeader("Authorization", EnvironmentVariables.Token);
+            //request.AddHeader("Authorization", "token " + EnvironmentVariables.Token);
 
             // PASSWORD use: make sure that request.AddHeader("User-Agent", EnvironmentVariables.UserAgent); above is commented out, and use line below.
             client.Authenticator = new HttpBasicAuthenticator(EnvironmentVariables.UserAgent, EnvironmentVariables.Password);

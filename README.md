@@ -35,7 +35,7 @@ _This is an application that showcases my portfolio work. It includes a blog sec
 
   ### ATTENTION: Before you run any code beyond this point, please read the following.
 
-  This app uses the Github Api requiring a username and password, which must be stored in an `EnvironmentVariables.cs` file in following the path: `Portfolio/Models/EnvironmentVariables.cs`. When cloned, this repository does _not_ with come with its this file, and will specifically exclude any from commits in the `.gitignore` file.
+  This app uses the Github Api requiring a username and password, which must be stored in an `EnvironmentVariables.cs` file in following the path: `Portfolio/Models/EnvironmentVariables.cs`. When cloned, this repository does _not_ with come with this file, and will specifically exclude any from commits in the `.gitignore` file.
 
   * **You must make this file with _your own Github username and password_**. If you do not have an account with GitHub, you can register for one. If you would prefer to not use your password, you can also generate for yourself a personal access token:
     * Start by going to your GitHub account settings.
@@ -65,7 +65,7 @@ _This is an application that showcases my portfolio work. It includes a blog sec
   * If you decide to use a personal token instead of a password, you will have to go to the `Project.cs` file in the `Portfolio/Models` folder.
     * Make sure line 33 is not commented out.
       ```
-      request.AddHeader("Authorization", EnvironmentVariables.Token);
+      request.AddHeader("Authorization", "token " + EnvironmentVariables.Token);
       ```
     * Comment out or remove line 36.
       ```
@@ -85,7 +85,7 @@ This will set up database onto the server.
 * Navigate the application as you see fit.
 
 ## Known Bugs
-* When the user is loads the failed log in page, the navigation links for Home sections Contact and Work will reappear though clicking them will do nothing.
+* When the user recieves the failed log-in page, the navigation links for Home sections Contact and Work will reappear though clicking them will do nothing.
 
 ## Technology Used
 * ASP.NET
