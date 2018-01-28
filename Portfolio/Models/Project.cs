@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using RestSharp;
@@ -10,7 +10,7 @@ namespace Portfolio.Models
 {
     public class Project
     {
-        
+
         public string Name { get; set; }
         public string Html_Url { get; set; }
         public string Description { get; set; }
@@ -25,14 +25,14 @@ namespace Portfolio.Models
             // var request = new RestRequest("user/starred", Method.GET);
 
             // To get a general listing of starred projects for the user specified in the UserAgent property.
-            var request = new RestRequest("users/" + EnvironmentVariables.UserAgent + "/starred", Method.GET);
+            var request = new RestRequest("users/kbordon/starred", Method.GET);
             request.AddHeader("Accept", "application/vnd.github.v3.full+json");
             request.AddHeader("User-Agent", EnvironmentVariables.UserAgent);
 
             // If using token, uncomment this and reference variable from enviroment key.
             //request.AddHeader("Authorization", EnvironmentVariables.Token);
 
-            // If using basic password, and username authentication, make sure the line above is commented out, and use line below.
+            // PASSWORD use: make sure that request.AddHeader("User-Agent", EnvironmentVariables.UserAgent); above is commented out, and use line below.
             client.Authenticator = new HttpBasicAuthenticator(EnvironmentVariables.UserAgent, EnvironmentVariables.Password);
 
             var response = new RestResponse();
