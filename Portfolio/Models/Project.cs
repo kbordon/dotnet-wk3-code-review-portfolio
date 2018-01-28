@@ -27,7 +27,7 @@ namespace Portfolio.Models
             // To get a general listing of starred projects for the user specified in the UserAgent property.
             var request = new RestRequest("users/kbordon/starred", Method.GET);
             request.AddHeader("Accept", "application/vnd.github.v3.full+json");
-            request.AddHeader("User-Agent", EnvironmentVariables.UserAgent);
+            request.AddHeader("User-Agent", "");
 
             // If using token, uncomment this and reference variable from enviroment key.
             //request.AddHeader("Authorization", "token " + EnvironmentVariables.Token);

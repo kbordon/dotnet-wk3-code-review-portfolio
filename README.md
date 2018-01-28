@@ -32,10 +32,16 @@ _This is an application that showcases my portfolio work. It includes a blog sec
   >cd dotnet-wk3-code-review-portfolio
   >cd portfolio
   ```
-
+***
   ### ATTENTION: Before you run any code beyond this point, please read the following.
 
-  This app uses the Github Api requiring a username and password, which must be stored in an `EnvironmentVariables.cs` file in following the path: `Portfolio/Models/EnvironmentVariables.cs`. When cloned, this repository does _not_ with come with this file, and will specifically exclude any from commits in the `.gitignore` file.
+  This app uses the Github API, and although it doesn't require any authentication to run this application, it will limit requests to **60 per hour**.
+
+  #### If this is sufficient, skip this section.
+  ***
+  ***
+   If you must make more than 60 requests per hour, it will require a **username** and **password**, which must be stored in an `EnvironmentVariables.cs` file in following the path: `Portfolio/Models/EnvironmentVariables.cs`.
+   When cloned, this repository does _not_ with come with this file, and will specifically exclude any from commits in the `.gitignore` file.
 
   * **You must make this file with _your own Github username and password_**. If you do not have an account with GitHub, you can register for one. If you would prefer to not use your password, you can also generate for yourself a personal access token:
     * Start by going to your GitHub account settings.
@@ -54,38 +60,40 @@ _This is an application that showcases my portfolio work. It includes a blog sec
       public class EnvironmentVariables
       {
           public static string UserAgent = <<REPLACE WITH YOUR USERNAME FOR GITHUB>>;
-          public static string Token = <<REPLACE WITH YOUR PERSONAL TOKEN>>;
-          public static string Password = <<REPLACE_WITH_YOUR_PASSWORD>>;
+          public static string Key = <<REPLACE WITH YOUR PASSWORD OR PERSONAL TOKEN>>;
       }
   }
   ```
-  * Replace each _<<...>>_ with your the appropriate information as a string (in quotes "YOUR_USERNAME").
+  * Replace each _<<...>>_ with your the appropriate information as a string (in quotes "YOUR USERNAME").
+  * Then go to the `Project.cs` file in the `Portfolio/Models` folder, and on line 30, change the second argument in the AddHeader method from an empty string to the following:
+    * `request.AddHeader("User-Agent", EnvironmentVariables.UserAgent);`
+
   * Remember should you make any commits, or push any code afterwards, when you clone it to a different destination, you will have to recreate this file.
 
   * If you decide to use a personal token instead of a password, you will have to go to the `Project.cs` file in the `Portfolio/Models` folder.
     * Make sure line 33 is not commented out.
       ```
-      request.AddHeader("Authorization", "token " + EnvironmentVariables.Token);
+      request.AddHeader("Authorization", "token " + EnvironmentVariables.Key);
       ```
     * Comment out or remove line 36.
       ```
-      client.Authenticator = new HttpBasicAuthenticator(EnvironmentVariables.UserAgent, EnvironmentVariables.Password);
+      client.Authenticator = new HttpBasicAuthenticator(EnvironmentVariables.UserAgent, EnvironmentVariables.Key);
       ```
-
-* Finally, return to terminal, and making sure you're in the Portfolio project folder (where the `Portfolio.csproj` resides), enter the following:
+***
+***
+* In terminal, and making sure you're in the Portfolio project folder (where the `Portfolio.csproj` resides), enter the following:
 ```
 >dotnet restore
 >dotnet ef database update
 ```
-This will set up database onto the server.
-
+This will set up database onto the local server.
 
 * Back in Visual Studio, click the button at the top of the application that looks like a Play button, or press <kbd>⌘</kbd> + <kbd>return</kbd> or <kbd>ctrl</kbd> + <kbd>F5</kbd>. This will automatically run application, and open a browser directly on its homepage.
-* Running the application will also seed in an Admin and User into the user database. These can be logged into using passwords _admin_ and _user_ respectively.
-* Navigate the application as you see fit.
+* Running the application will also seed in an administrative, and regular user into the user database. These can be logged into using usernames _Admin_ and _User_, with passwords _admin_ and _user_ respectively.
+* Finally, navigate the application as you see fit.
 
 ## Known Bugs
-* When the user recieves the failed log-in page, the navigation links for Home sections Contact and Work will reappear though clicking them will do nothing.
+* When the user receives the failed log-in page, the navigation links for Home sections Contact and Work will reappear though clicking them will do nothing.
 
 ## Technology Used
 * ASP.NET
