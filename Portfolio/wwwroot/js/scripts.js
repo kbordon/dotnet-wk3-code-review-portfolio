@@ -12,9 +12,9 @@
     $('#menu-works').click(function(){
         if($('#home-projects').css('display') === 'none' && $('#home-projects').length)
         {
+            $('#work').css('display', 'block');
             $('#home-projects').css('display', 'flex');
             $('#work h1').css('color', 'white')
-            alert("this hasn't been opened yet.");
             $.ajax({
                 type: 'GET',
                 dataType: 'html',
