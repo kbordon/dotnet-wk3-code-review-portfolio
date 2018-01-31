@@ -6,6 +6,8 @@
 ## Description
 _This is an application that showcases my portfolio work. It includes a blog section that can be logged into with an Administrative User (in this case, myself) to manage blog posts, and allows site visitors to add comments to blog posts. The application also allows site visitors to register an account, which allows the logged in visitor to also delete their own comments._
 
+[Screenshots](https://github.com/kbordon/dotnet-wk3-code-review-portfolio/wiki/Screenshots)
+
 ## Specs
 | Behavior | Input Example | Output Example |
 |-|-|-|
