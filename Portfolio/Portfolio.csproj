@@ -19,6 +19,7 @@
     <Folder Include="Views\Comment\" />
     <Folder Include="Views\Role\" />
     <Folder Include="wwwroot\img\" />
+    <Folder Include="wiki\" />
   </ItemGroup>
 
   <ItemGroup>
